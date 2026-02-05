@@ -260,6 +260,48 @@ ul li::before {
     line-height: 1.4;
 }
 
+/* Contact Section */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-item iconify-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    color: currentColor;
+}
+
+
+
+.contact-item:hover iconify-icon {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.1));
+}
+
+a.contact-item:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+
+
+
 /* Footer */
 footer {
     border-top: 1px solid var(--border-color);
