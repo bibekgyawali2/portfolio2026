@@ -1,81 +1,85 @@
 const portfolioData = {
     "education": [
         {
-            "period": "2018–2023",
-            "degree": "B.E. Electronics & Communication",
-            "institution": "Himalaya College of Engineering",
+            "period": "2018 – 2023",
+            "degree": "Bachelor in Electronics and Communication Engineering",
+            "institution": "Tribhuvan University, Himalaya College of Engineering",
             "details": ""
         },
         {
-            "period": "2015–2018",
+            "period": "2015 – 2018",
             "degree": "+2 Science",
-            "institution": "National Higher Secondary School",
+            "institution": "National Education Board, National Higher Secondary School",
             "details": ""
         }
     ],
     "experience": [
         {
-            "period": "Dec 2024–Present",
-            "role": "Mobile App Developer",
+            "period": "Dec 2024 – Present",
+            "role": "Mobile Application Developer",
             "institution": "Kingsoft Pvt Ltd",
             "description": [
-                "Manage full mobile dev pipeline: docs, testing, deployment.",
-                "Integrate REST APIs & robust state management.",
-                "Collaborate with cross-functional teams."
+                "Managing complete mobile development pipeline including documentation, testing, and deployment.",
+                "Integrating RESTful APIs and implementing robust state management solutions.",
+                "Collaborating with cross-functional teams to deliver high-quality software solutions."
             ]
         },
         {
-            "period": "Nov 2023–Mar 2024",
-            "role": "Mobile App Developer",
+            "period": "Nov 2023 – Mar 2024",
+            "role": "Mobile Application Developer",
             "institution": "CellApp",
             "description": [
-                "Implemented clean, scalable architecture.",
-                "Published highly-rated apps on Play Store & App Store.",
-                "Integrated payments (Khalti, eSewa, Connect IPS) & APIs.",
-                "Developed SaaS apps using Flutter."
+                "Implemented clean architecture principles, enhancing code maintainability and scalability for long-term project sustainability.",
+                "Published mobile applications in the Play Store and App Store, each achieving high user ratings and positive feedback.",
+                "Integrated RESTful APIs, enhancing app functionality and user experience.",
+                "Integrated payment gateways including Khalti, eSewa, Connect IPS, and IME Pay, enabling secure transactions.",
+                "Applied UI/UX principles to enhance the user experience and visual appeal of mobile applications.",
+                "Developed a Software as a Service (SaaS) application using the Flutter framework, providing scalable, multi-platform solutions to users across various devices."
             ]
         },
         {
-            "period": "Nov 2022–Mar 2024",
-            "role": "Mobile App Developer",
+            "period": "Nov 2022 – Mar 2024",
+            "role": "Mobile Application Developer",
             "institution": "SmartPalika",
             "description": [
-                "Built & deployed apps for local gov operations.",
-                "ensured timely delivery with cross-functional teams.",
-                "Reduced crash rates via troubleshooting.",
-                "Demoed apps to government stakeholders."
+                "Developed and deployed mobile applications using the Flutter framework, supporting local government operations across Nepal.",
+                "Collaborated with cross-functional teams, ensuring timely delivery of project milestones within deadlines.",
+                "Troubleshoot and resolve technical issues, reducing app crash rates and improving overall user satisfaction.",
+                "Published apps on the Play Store and App Store.",
+                "Presented and demoed applications to local government offices, driving stakeholder engagement and adoption."
             ]
         }
     ],
     "projects": [
         {
-            "title": "Kathmandu Metropolitan City ",
-            "description": "Official digital governance app for Kathmandu Metro."
+            "title": "Kathmandu Metropolitan City (Official App)",
+            "description": "The official mobile app of Kathmandu Metropolitan City (कामपा) is designed to provide digital governance services for citizens."
         },
         {
             "title": "Kirana Pasal",
-            "description": "SaaS for shopkeepers: inventory, sales, CRM & analytics."
+            "description": "A Software as a Service (SaaS) application tailored for shopkeepers, streamlining inventory management, sales tracking, and customer relationship management processes. It offers features such as order management, billing, and analytics to optimize business operations."
         },
         {
             "title": "Narmin Calender",
-            "description": "Resource scheduling & event management for rural gov."
+            "description": "A calendar application for Rural Local Government to efficiently schedule resources, manage events. It offers intuitive calendar functionalities and collaboration tools for seamless coordination."
         },
         {
             "title": "Narmin PWA",
-            "description": "Scalable PWA for National Rural Municipalities Association."
+            "description": "Created a Progressive Web App (PWA) for the National Association of Rural Municipalities in Nepal, enabling rural municipalities to manage services and improve governance through a scalable, accessible platform."
         },
         {
             "title": "SmartPalika Apps",
-            "description": "Digital governance apps: eSifaris, grievances & updates."
+            "description": "Developed mobile applications for local governments in Nepal, facilitating digital governance and enhancing service delivery through eSifaris, grievance submission, and real-time updates."
         },
         {
             "title": "Ghumna",
-            "description": "Trekking app with offline maps, GPS & route planning."
+            "description": "Developed a trekking and hiking app that provides detailed insights into Nepal's trails, with offline maps, GPS navigation, and customizable route planning features for seamless, connectivity-free exploration."
         }
     ]
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Render in order: Experience -> Education -> Projects
     renderExperience(portfolioData.experience);
     renderEducation(portfolioData.education);
     renderProjects(portfolioData.projects);
