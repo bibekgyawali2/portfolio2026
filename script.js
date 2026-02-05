@@ -79,6 +79,33 @@ const portfolioData = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Theme Management
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Check for saved user preference, if any, on load of the website
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme == 'dark') {
+        document.body.classList.add('dark-mode');
+    } else if (currentTheme == 'light') {
+        document.body.classList.remove('dark-mode');
+    } else if (prefersDarkScheme.matches) {
+        // If no preference found, check system preference
+        document.body.classList.add('dark-mode');
+    }
+
+    // Toggle theme on button click
+    themeToggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        // Save preference
+        let theme = 'light';
+        if (document.body.classList.contains('dark-mode')) {
+            theme = 'dark';
+        }
+        localStorage.setItem('theme', theme);
+    });
+
     // Render in order: Experience -> Education -> Projects
     renderExperience(portfolioData.experience);
     renderEducation(portfolioData.education);

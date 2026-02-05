@@ -1,22 +1,40 @@
 :root {
-    --bg-color: #FFFFFF;
-    --text-color: #1A1A1A;
-    --accent-color: #0055FF;
+    /* Light Theme (Default) */
+    --bg-color: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #444444;
+    --text-tertiary: #888888;
+    --accent-color: #0055ff;
+    --border-color: #eeeeee;
+    --link-hover: #00fa9a;
+    /* Something visible but matching? Or just stick to underline. Let's use text color change */
+
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --font-mono: 'IBM Plex Mono', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
     --spacing-unit: 0.75rem;
     --max-width: 750px;
 }
 
+body.dark-mode {
+    /* Dark Theme */
+    --bg-color: #121212;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #777777;
+    --accent-color: #66a3ff;
+    --border-color: #333333;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--text-primary);
     font-family: var(--font-sans);
     font-size: 15px;
     line-height: 1.55;
@@ -37,7 +55,7 @@ header {
     align-items: center;
     margin-bottom: 2.5rem;
     flex-wrap: wrap;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.75rem;
 }
 
@@ -45,23 +63,68 @@ header {
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: -0.02em;
+    color: var(--text-primary);
 }
 
 nav {
     display: flex;
     gap: 1.25rem;
+    align-items: center;
 }
 
 nav a {
-    color: #555;
+    color: var(--text-tertiary);
     text-decoration: none;
     font-size: 0.85rem;
     transition: color 0.2s ease;
 }
 
-nav a:hover {
-    color: var(--text-color);
-    text-decoration: none;
+nav a:hover,
+nav a.active {
+    color: var(--text-primary);
+}
+
+/* Theme Toggle Button */
+/* Theme Toggle Button */
+#theme-toggle {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    color: var(--text-primary);
+    padding: 0.4rem;
+    border-radius: 0.35rem;
+    /* Small rounded corners */
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    width: 32px;
+    height: 32px;
+}
+
+#theme-toggle:hover {
+    background-color: var(--border-color);
+    /* Subtle hover effect */
+}
+
+/* Icon Switching Logic */
+/* Default (Light Mode): Show Moon (to switch to dark) */
+.sun-icon {
+    display: none;
+}
+
+.moon-icon {
+    display: block;
+}
+
+/* Dark Mode: Show Sun (to switch to light) */
+body.dark-mode .sun-icon {
+    display: block;
+}
+
+body.dark-mode .moon-icon {
+    display: none;
 }
 
 /* Typography */
@@ -72,13 +135,14 @@ h1 {
     letter-spacing: -0.025em;
     margin-bottom: 2rem;
     max-width: 100%;
+    color: var(--text-primary);
 }
 
 h2 {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #888;
+    color: var(--text-tertiary);
     font-weight: 600;
     margin: 0;
 }
@@ -89,12 +153,13 @@ h3 {
     margin-bottom: 0.25rem;
     letter-spacing: -0.01em;
     display: inline-block;
+    color: var(--text-primary);
 }
 
 p {
     margin-bottom: 0.5rem;
     max-width: 100%;
-    color: #444;
+    color: var(--text-secondary);
 }
 
 a {
@@ -114,7 +179,7 @@ section {
 .section-header {
     margin-bottom: 1rem;
     padding-bottom: 0.25rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* Articles/Cards */
@@ -132,15 +197,15 @@ article:last-child {
 .meta {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: #888;
+    color: var(--text-tertiary);
     margin-bottom: 0.1rem;
     float: right;
 }
 
 .institution {
     font-style: normal;
-    /* clean look */
-    color: #666;
+    color: var(--text-tertiary);
+    /* Was secondary info */
     margin-bottom: 0.25rem;
     font-size: 0.85rem;
     display: block;
@@ -156,7 +221,7 @@ ul li {
     position: relative;
     padding-left: 0.75rem;
     margin-bottom: 0.1rem;
-    color: #555;
+    color: var(--text-secondary);
     font-size: 0.9rem;
 }
 
@@ -164,7 +229,7 @@ ul li::before {
     content: "-";
     position: absolute;
     left: 0;
-    color: #aaa;
+    color: var(--text-tertiary);
 }
 
 /* Skills Grid */
@@ -185,26 +250,24 @@ ul li::before {
     font-size: 0.8rem;
     display: inline;
     margin-right: 0.5rem;
-    color: #333;
+    color: var(--text-primary);
+    /* Darker/Lighter text depending on mode */
 }
 
 .skills-grid div {
     font-size: 0.85rem;
-    color: #555;
+    color: var(--text-secondary);
     line-height: 1.4;
 }
 
 /* Footer */
 footer {
-    border-top: 1px solid #E5E5E5;
+    border-top: 1px solid var(--border-color);
     padding-top: 2rem;
-    color: #888;
+    color: var(--text-tertiary);
     font-family: var(--font-mono);
     font-size: 0.75rem;
 }
-
-/* Utilities */
-
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -215,13 +278,24 @@ footer {
     header {
         flex-direction: column;
         gap: 1.5rem;
+        align-items: flex-start;
+        /* Reset align items for column flex */
     }
+
+    .site-branding {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Move theme toggle to align with branding on mobile if needed, or keep in nav. 
+       Let's keep nav simple. */
 
     nav {
         flex-wrap: wrap;
         width: 100%;
-        justify-content: space-between;
-        /* Spread specific links or just nice gap */
-        gap: 1rem 1.5rem;
+        justify-content: flex-start;
+        gap: 1rem 1.25rem;
     }
 }
