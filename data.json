@@ -1,0 +1,80 @@
+{
+    "education": [
+        {
+            "period": "2018 – 2023",
+            "degree": "Bachelor in Electronics and Communication Engineering",
+            "institution": "Tribhuvan University, Himalaya College of Engineering",
+            "details": ""
+        },
+        {
+            "period": "2015 – 2018",
+            "degree": "+2 Science",
+            "institution": "National Education Board, National Higher Secondary School",
+            "details": ""
+        }
+    ],
+    "experience": [
+        {
+            "period": "Dec 2024 – Present",
+            "role": "Mobile Application Developer",
+            "institution": "Kingsoft Pvt Ltd",
+            "description": [
+                "Managing complete mobile development pipeline including documentation, testing, and deployment.",
+                "Integrating RESTful APIs and implementing robust state management solutions.",
+                "Collaborating with cross-functional teams to deliver high-quality software solutions."
+            ]
+        },
+        {
+            "period": "Nov 2023 – Mar 2024",
+            "role": "Mobile Application Developer",
+            "institution": "CellApp",
+            "description": [
+                "Implemented clean architecture principles, enhancing code maintainability and scalability.",
+                "Published mobile applications in the Play Store and App Store with high user ratings.",
+                "Integrated payments (Khalti, eSewa, Connect IPS, IME Pay) and RESTful APIs.",
+                "Developed SaaS applications using Flutter."
+            ]
+        },
+        {
+            "period": "Nov 2022 – Mar 2024",
+            "role": "Mobile Application Developer",
+            "institution": "SmartPalika",
+            "description": [
+                "Developed and deployed mobile applications for local government operations across Nepal.",
+                "Collaborated with cross-functional teams ensuring timely delivery.",
+                "Troubleshot technical issues reducing crash rates.",
+                "Presented demos to local government offices."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "title": "Kathmandu Metropolitan City App",
+            "description": "The official mobile app of Kathmandu Metropolitan City (कामपा) designed to provide digital governance services for citizens."
+        },
+        {
+            "title": "Kirana Pasal",
+            "description": "A SaaS application tailored for shopkeepers, streamlining inventory management, sales tracking, and CRM. Features include order management, billing, and analytics."
+        },
+        {
+            "title": "Narmin Calender",
+            "description": "A calendar application for Rural Local Government to efficiently schedule resources and manage events, offering intuitive functionality and collaboration tools."
+        },
+        {
+            "title": "Narmin PWA",
+            "description": "A Progressive Web App (PWA) for the National Association of Rural Municipalities in Nepal, enabling rural municipalities to manage services through a scalable platform."
+        },
+        {
+            "title": "SmartPalika Apps",
+            "description": "Mobile applications for local governments in Nepal, facilitating digital governance and enhancing service delivery through eSifaris, grievance submission, and real-time updates."
+        },
+        {
+            "title": "Ghumna",
+            "description": "A trekking and hiking app providing detailed insights into Nepal's trails, with offline maps, GPS navigation, and customized route planning."
+        },
+        {
+            "title": "Automated Ventilator System",
+            "description": "Designed and prototyped a low-cost mechanical ventilator to address medical shortages using Arduino and precision sensors. (Thesis Project)"
+        }
+    ]
+}

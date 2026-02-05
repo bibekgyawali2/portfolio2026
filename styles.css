@@ -1,0 +1,227 @@
+:root {
+    --bg-color: #FFFFFF;
+    --text-color: #1A1A1A;
+    --accent-color: #0055FF;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SF Mono', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", monospace;
+    --spacing-unit: 0.75rem;
+    --max-width: 750px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.layout-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 1.25rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.75rem;
+}
+
+.site-branding {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+}
+
+nav {
+    display: flex;
+    gap: 1.25rem;
+}
+
+nav a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* Typography */
+h1 {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    margin-bottom: 2rem;
+    max-width: 100%;
+}
+
+h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    font-weight: 600;
+    margin: 0;
+}
+
+h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+    display: inline-block;
+}
+
+p {
+    margin-bottom: 0.5rem;
+    max-width: 100%;
+    color: #444;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Sections */
+section {
+    margin-bottom: 2.5rem;
+}
+
+.section-header {
+    margin-bottom: 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Articles/Cards */
+article {
+    margin-bottom: 1.75rem;
+    overflow: hidden;
+    /* Clearfix for floated meta */
+}
+
+article:last-child {
+    margin-bottom: 0;
+}
+
+/* Meta information */
+.meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 0.1rem;
+    float: right;
+}
+
+.institution {
+    font-style: normal;
+    /* clean look */
+    color: #666;
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+    display: block;
+}
+
+/* Lists */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    position: relative;
+    padding-left: 0.75rem;
+    margin-bottom: 0.1rem;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+ul li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: #aaa;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+}
+
+@media (min-width: 600px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.skills-grid strong {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    display: inline;
+    margin-right: 0.5rem;
+    color: #333;
+}
+
+.skills-grid div {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid #E5E5E5;
+    padding-top: 2rem;
+    color: #888;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+/* Utilities */
+
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+        /* Spread specific links or just nice gap */
+        gap: 1rem 1.5rem;
+    }
+}
