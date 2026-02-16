@@ -15,7 +15,7 @@
     --max-width: 1024px;
     --card-bg-light: #ffffff;
     --card-bg-dark: #1e1e1e;
-    --nav-bg-glass: rgba(229, 229, 229, 0.6);
+    --nav-bg-glass: rgba(255, 255, 255, 0.3);
     --nav-border-light: rgba(0, 0, 0, 0.08);
     --nav-text-color: #333;
 }
