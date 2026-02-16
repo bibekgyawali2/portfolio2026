@@ -52,28 +52,40 @@ const portfolioData = {
     ],
     "projects": [
         {
-            "title": "Kathmandu Metropolitan City (Official App)",
-            "description": "The official mobile app of Kathmandu Metropolitan City (कामपा) is designed to provide digital governance services for citizens."
+            "id": "proj1",
+            "title": "Kathmandu Metropolitan City",
+            "description": "The official mobile app designed to provide digital governance services for citizens.",
+            "tags": ["Flutter", "Governance", "Service"]
         },
         {
+            "id": "proj2",
             "title": "Kirana Pasal",
-            "description": "A Software as a Service (SaaS) application tailored for shopkeepers, streamlining inventory management, sales tracking, and customer relationship management processes. It offers features such as order management, billing, and analytics to optimize business operations."
+            "description": "SaaS application for shopkeepers streamlining inventory, sales, and CRM with analytics.",
+            "tags": ["SaaS", "Inventory", "Analytics"]
         },
         {
+            "id": "proj3",
             "title": "Narmin Calender",
-            "description": "A calendar application for Rural Local Government to efficiently schedule resources, manage events. It offers intuitive calendar functionalities and collaboration tools for seamless coordination."
+            "description": "Calendar application for Rural Local Government to schedule resources and manage events.",
+            "tags": ["Productivity", "GovTech"]
         },
         {
+            "id": "proj4",
             "title": "Narmin PWA",
-            "description": "Created a Progressive Web App (PWA) for the National Association of Rural Municipalities in Nepal, enabling rural municipalities to manage services and improve governance through a scalable, accessible platform."
+            "description": "Progressive Web App for National Association of Rural Municipalities in Nepal.",
+            "tags": ["PWA", "Web", "Governance"]
         },
         {
+            "id": "proj5",
             "title": "SmartPalika Apps",
-            "description": "Developed mobile applications for local governments in Nepal, facilitating digital governance and enhancing service delivery through eSifaris, grievance submission, and real-time updates."
+            "description": "Mobile applications for local governments facilitating eSifaris, grievances, and updates.",
+            "tags": ["Flutter", "Smart City"]
         },
         {
+            "id": "proj6",
             "title": "Ghumna",
-            "description": "Developed a trekking and hiking app that provides detailed insights into Nepal's trails, with offline maps, GPS navigation, and customizable route planning features for seamless, connectivity-free exploration."
+            "description": "Trekking and hiking app with offline maps, GPS navigation, and route planning.",
+            "tags": ["Travel", "Maps", "GPS"]
         }
     ]
 };
@@ -132,11 +144,23 @@ function renderProjects(projects) {
     const container = document.getElementById('projects-list');
     if (!container) return;
 
+    // Apply grid class to container
+    container.classList.add('projects-grid');
+
     container.innerHTML = projects.map(project => `
-        <article class="compact-item">
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-        </article>
+        <div class="project-card group">
+            <div class="card-content">
+                <div class="card-header">
+                     <div class="project-tags">
+                        ${project.tags.slice(0, 2).map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+                     </div>
+                     <iconify-icon icon="lucide:arrow-up-right" class="project-arrow" width="20"></iconify-icon>
+                </div>
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">${project.description}</p>
+            </div>
+            <div class="hover-bar"></div>
+        </div>
     `).join('');
 }
 
