@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Lede } from "@/components/Lede";
 import { ProjectList } from "@/components/ProjectList";
 import { Section } from "@/components/Section";
@@ -12,13 +11,6 @@ export default function Home() {
 
       <Section title="Selected work" more={{ href: "/work", label: "All work" }}>
         <ProjectList projects={projects.slice(0, 3)} />
-      </Section>
-
-      <Section title="Elsewhere">
-        <p>
-          More on the <Link href="/about">background</Link>, or the whole thing
-          as a <Link href="/cv">CV</Link>.
-        </p>
       </Section>
     </>
   );

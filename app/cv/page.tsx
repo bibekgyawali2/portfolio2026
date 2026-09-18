@@ -28,9 +28,15 @@ export const metadata: Metadata = {
 const record = [
   { term: "Grade", description: credentials.gpa },
   { term: "Scale", description: credentials.gradingScale },
-  { term: "English", description: credentials.englishTest },
-  { term: "GRE", description: credentials.gre },
 ].filter((item) => item.description);
+
+/** Test scores sit with the certifications, not with the degree. */
+const certifications = [
+  { term: credentials.englishTestDate, description: credentials.englishTest },
+  { term: credentials.greDate, description: credentials.gre },
+]
+  .filter((item) => item.description)
+  .concat(awards);
 
 const researchProjects = projects.filter((p) => p.kind === "Research project");
 const selfDirected = projects.filter((p) => p.kind === "Machine learning");
@@ -145,8 +151,8 @@ export default function CV() {
         <DataList items={skills} />
       </Section>
 
-      <Section title="Awards and certifications">
-        <DataList items={awards} />
+      <Section title="Certifications and awards">
+        <DataList items={certifications} />
       </Section>
 
       <Section title="Languages">

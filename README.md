@@ -1,7 +1,7 @@
 # bibekgyawali — portfolio
 
 A small static site built with Next.js (App Router), exported to plain HTML.
-Six pages, no client-side JavaScript beyond the nav and theme toggle.
+Four pages, no client-side JavaScript beyond the nav and theme toggle.
 
 ## Pages
 
@@ -10,15 +10,14 @@ Six pages, no client-side JavaScript beyond the nav and theme toggle.
 | `/` | Opening statement, selected work, current status |
 | `/work` | Project index |
 | `/work/[slug]` | A project written up properly — problem, method, what it taught |
-| `/about` | Narrative background, research interests, education, experience |
 | `/cv` | The document version. Print it for a PDF. |
 
 ## Editing
 
 Content is data, kept apart from presentation:
 
-- [`content/profile.ts`](content/profile.ts) — identity, nav, home and about copy,
-  education, experience, skills
+- [`content/profile.ts`](content/profile.ts) — identity, nav, home copy, credentials,
+  education, coursework, thesis, experience, skills
 - [`content/projects.ts`](content/projects.ts) — one entry per project; adding one
   creates its page at `/work/<slug>` automatically
 

@@ -1,7 +1,0 @@
-.prose {
-  max-width: 36rem;
-  color: var(--ink-soft);
-}
-
-.prose p { margin-bottom: 1rem; }
-.prose p:last-child { margin-bottom: 0; }

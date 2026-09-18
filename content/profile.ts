@@ -29,10 +29,12 @@ export const credentials = {
   gpa: "",
   /** Foreign committees do not know Tribhuvan's scale. Tell them. */
   gradingScale: "",
-  /** Add the four band scores and the exact month — committees check sub-scores. */
-  englishTest: "IELTS 7.0 overall (2026)",
+  /** Add the four band scores — committees check sub-scores, not just the overall. */
+  englishTest: "IELTS 7.0 overall",
+  englishTestDate: "2026",
   /** Optional; only list if the score helps you. */
   gre: "",
+  greDate: "",
   /** Thesis supervisor, with title and department. Names research provenance. */
   supervisor: "",
   /** Link to the thesis PDF. Hosting it costs nothing and proves the work exists. */
@@ -41,7 +43,6 @@ export const credentials = {
 
 export const nav = [
   { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
   { label: "CV", href: "/cv" },
 ];
 
@@ -54,16 +55,6 @@ export const home = {
     "Alongside the degree I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, a retail platform running in 1,000 shops. Useful work, and it paid for the degree, but the ventilator is the problem I want to keep.",
   ],
   now: "Applying for master's study in systems that sense, compute and act — control, instrumentation and signal processing.",
-};
-
-export const about = {
-  lede: "Electronics and Communication Engineering, Tribhuvan University. I work on control, instrumentation and signals — and I have spent three years shipping production software to people who had no choice but to rely on it.",
-  story: [
-    "I came to engineering through software, which is the usual route here: it pays, it is learnable from a laptop, and there is real demand. For three years I built mobile systems for Nepali municipalities and businesses — the digital governance application for Kathmandu Metropolitan City among them — and I learned the thing that production teaches and coursework cannot, which is what it costs to keep a system correct once people depend on it and you cannot take it back.",
-    "The thesis pulled me back to hardware. Building a ventilator meant confronting a plant that fights you: a bag valve mask whose resistance shifts through the stroke and shifts again with the patient. A timer cannot handle that; a closed loop can. Getting a PID controller to hold tidal volume against real pneumatics, with three sensors feeding it over I²C and analog lines, was the most interesting problem I have been given, and I got it working.",
-    "I also know how far short of rigorous that work fell. I tuned the gains by hand because I had no model of the plant, and I could demonstrate the device holding its set point without being able to state a stability margin. Working and characterised are not the same thing, and the distance between them is what I want to close.",
-    "So: a master's, with the mathematics and the research training to evaluate a system rather than merely demonstrate one. Longer term I want to work on instrumentation that can be deployed where the expensive version never arrives.",
-  ],
 };
 
 export const interests = [
