@@ -1,0 +1,63 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.item { border-bottom: 1px solid var(--rule); }
+
+.link {
+  display: grid;
+  grid-template-columns: var(--col) 1fr auto;
+  gap: 0 1.5rem;
+  align-items: baseline;
+  padding: 1.15rem 0;
+  text-decoration: none;
+  transition: background-color 120ms linear;
+}
+
+.link:hover { background-color: color-mix(in srgb, var(--ink) 4%, transparent); }
+
+.link:hover .title { text-decoration: underline; text-underline-offset: 0.2em; }
+
+.year {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.summary {
+  margin: 0.25rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9375rem;
+  max-width: 30rem;
+  text-wrap: pretty;
+}
+
+.kind {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  text-align: right;
+}
+
+@media (max-width: 40rem) {
+  .link { grid-template-columns: var(--col) 1fr; }
+  .kind { display: none; }
+}
+
+@media (max-width: 34rem) {
+  .link {
+    grid-template-columns: 1fr;
+    padding: 1rem 0;
+  }
+
+  .year { margin-bottom: 0.3rem; display: block; }
+}

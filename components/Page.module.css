@@ -1,21 +1,14 @@
-.page {
+.shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   max-width: var(--measure);
   margin: 0 auto;
-  padding: 6rem var(--gutter) 5rem;
+  padding: 0 var(--gutter) 4rem;
 }
 
-.footer {
-  border-top: 1px solid var(--rule);
-  padding-top: 1.5rem;
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  color: var(--ink-faint);
-}
-
-@media (max-width: 34rem) {
-  .page { padding-top: 3.5rem; }
-}
+.main { flex: 1; }
 
 @media print {
-  .page { max-width: none; padding: 0; }
+  .shell { max-width: none; padding: 0; }
 }

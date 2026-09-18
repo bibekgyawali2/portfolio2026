@@ -1,13 +1,26 @@
-# Portfolio — Bibek Gyawali
+# bibekgyawali — portfolio
 
-A single static page, built with Next.js (App Router) and exported to plain HTML.
-Weighted toward academic and research background for master's applications.
+A small static site built with Next.js (App Router), exported to plain HTML.
+Six pages, no client-side JavaScript beyond the nav and theme toggle.
+
+## Pages
+
+| Route | What it is |
+| --- | --- |
+| `/` | Opening statement, selected work, current status |
+| `/work` | Project index |
+| `/work/[slug]` | A project written up properly — problem, method, what it taught |
+| `/about` | Narrative background, research interests, education, experience |
+| `/cv` | The document version. Print it for a PDF. |
 
 ## Editing
 
-All content lives in [`content/profile.ts`](content/profile.ts) as typed data.
-The page in [`app/page.tsx`](app/page.tsx) composes it from a handful of
-components; nothing else needs touching to change what the site says.
+Content is data, kept apart from presentation:
+
+- [`content/profile.ts`](content/profile.ts) — identity, nav, home and about copy,
+  education, experience, skills
+- [`content/projects.ts`](content/projects.ts) — one entry per project; adding one
+  creates its page at `/work/<slug>` automatically
 
 `*asterisks*` inside content strings render as italics.
 
@@ -15,18 +28,23 @@ components; nothing else needs touching to change what the site says.
 
 | Component | Purpose |
 | --- | --- |
-| `Page` / `Footer` | Page shell and closing line |
-| `Masthead` | Name, summary, contact row |
-| `Section` | Titled section with optional lede |
-| `Entry` | Date column + title, affiliation, bullets, note |
+| `Page` | Shell: nav, main, footer |
+| `Nav` | Site nav with current-page state, plus the theme toggle |
+| `Lede` | Home display line, intro, "now" |
+| `PageHeader` | Kicker, title and lede on interior pages |
+| `ProjectList` | The work index rows |
+| `ProjectBody` | Prose sections of a project page |
+| `Section` | Titled section with optional lede and trailing link |
+| `Entry` | Date column + title, affiliation, bullets |
 | `DataList` | Two-column term/description list |
-| `Prose` | Paragraph block |
+| `ThemeToggle` | Light/dark switch; light is the default |
 
 ## Design
 
-One column, hairline rules, system font stack. No icons, no images, no web
-fonts, no client-side JavaScript. Dark mode follows the OS setting. Printing the
-page produces a clean CV with URLs expanded.
+One column, hairline rules, system font stack. No icons, images or web fonts.
+Light by default regardless of OS setting; the choice persists in
+`localStorage` and is re-applied before first paint. Nav and footer are hidden
+when printing so `/cv` prints clean, with URLs expanded.
 
 ## Commands
 
@@ -36,8 +54,6 @@ npm run dev     # http://localhost:3000
 npm run build   # static export to out/
 ```
 
-## Deploy
-
 `out/` is plain static output — GitHub Pages, Netlify, Vercel, or any file
-server. On Vercel, drop `output: "export"` from `next.config.ts` if you later
-want server features.
+server. Drop `output: "export"` from `next.config.ts` if you later want server
+features.

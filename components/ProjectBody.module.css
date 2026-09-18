@@ -1,0 +1,21 @@
+.body { max-width: 34rem; }
+
+.block { margin-bottom: 2.75rem; }
+.block:last-child { margin-bottom: 0; }
+
+.heading {
+  margin: 0 0 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.block p {
+  margin-bottom: 1rem;
+  color: var(--ink-soft);
+}
+
+.block p:last-child { margin-bottom: 0; }
+
+@media print {
+  .block { page-break-inside: avoid; }
+}

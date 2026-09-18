@@ -1,14 +1,15 @@
 import type { ReactNode } from "react";
+import { identity } from "@/content/profile";
+import { Nav } from "./Nav";
+import { SiteFooter } from "./SiteFooter";
 import styles from "./Page.module.css";
 
 export function Page({ children }: { children: ReactNode }) {
-  return <main className={styles.page}>{children}</main>;
-}
-
-export function Footer({ children }: { children: ReactNode }) {
   return (
-    <footer className={styles.footer}>
-      <p>{children}</p>
-    </footer>
+    <div className={styles.shell}>
+      <Nav name={identity.name} />
+      <main className={styles.main}>{children}</main>
+      <SiteFooter />
+    </div>
   );
 }

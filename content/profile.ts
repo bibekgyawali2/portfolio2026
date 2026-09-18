@@ -17,10 +17,32 @@ export const identity = {
   ],
 };
 
-export const statement = [
-  "My undergraduate thesis was a closed-loop ventilator built for a hospital system where a commercial unit costs more than a rural clinic's annual equipment budget. Making it work meant tuning a PID loop against real pneumatic dynamics, trusting a MAX30100 and an MPX5010 to close that loop in real time, and accepting that a missed deadline in the control path is a clinical failure, not a dropped frame.",
-  "That problem is what I want to keep working on: control and estimation on hardware that is cheap enough to deploy widely, and the signal processing and machine learning that make such systems trustworthy. I am applying for master's study to do this with proper depth — stronger foundations in control theory and statistical signal processing, and the research training to evaluate a system rather than merely demonstrate it.",
+export const nav = [
+  { label: "Work", href: "/work" },
+  { label: "About", href: "/about" },
+  { label: "CV", href: "/cv" },
 ];
+
+export const home = {
+  /** The opening line. Set in display type; keep it to one idea. */
+  display:
+    "I build instruments — things that measure something real and then act on it.",
+  intro: [
+    "I am an electronics engineer in Kathmandu. My thesis was a ventilator: a closed-loop device built from parts a hospital workshop could source, with a PID controller holding airway pressure against lungs that do not behave linearly.",
+    "Before that, and alongside the degree, I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, a retail platform running in 1,000 shops. Useful work, and it paid for the degree, but the ventilator is the problem I want to keep.",
+  ],
+  now: "Applying for master's study in control systems, signal processing and biomedical instrumentation.",
+};
+
+export const about = {
+  lede: "Electronics and Communication Engineering, Tribhuvan University. I work on control, instrumentation and signals — and I have spent three years shipping production software to people who had no choice but to rely on it.",
+  story: [
+    "I came to engineering through software, which is the usual route here: it pays, it is learnable from a laptop, and there is real demand. For three years I built mobile systems for Nepali municipalities and businesses — the digital governance application for Kathmandu Metropolitan City among them — and I learned the thing that production teaches and coursework cannot, which is what it costs to keep a system correct once people depend on it and you cannot take it back.",
+    "The thesis pulled me back to hardware. Building a ventilator meant confronting a plant that fights you: a bag valve mask whose resistance shifts through the stroke and shifts again with the patient. A timer cannot handle that; a closed loop can. Getting a PID controller to hold tidal volume against real pneumatics, with three sensors feeding it over I²C and analog lines, was the most interesting problem I have been given, and I got it working.",
+    "I also know exactly how far short of rigorous that work fell. I tuned the gains by hand because I had no model of the plant, and I could demonstrate the device holding its set point without being able to state a stability margin. Working and characterised are not the same thing, and the distance between them is the thing I want to close.",
+    "So: a master's, in control theory and statistical signal processing, with the research training to evaluate a system rather than merely demonstrate one. Longer term I want to work on instrumentation that can be deployed where the expensive version never arrives.",
+  ],
+};
 
 export const interests = [
   {

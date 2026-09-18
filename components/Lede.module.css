@@ -1,0 +1,41 @@
+.display {
+  margin: 0;
+  max-width: 22ch;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 2.625rem);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.intro {
+  max-width: 34rem;
+  margin: 2.5rem 0 0;
+  color: var(--ink-soft);
+}
+
+.intro p { margin-bottom: 1rem; }
+.intro p:last-child { margin-bottom: 0; }
+
+.now {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+}
+
+.nowLabel {
+  flex: none;
+  width: var(--col);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.nowBody { margin: 0; max-width: 28rem; }
+
+@media (max-width: 34rem) {
+  .now { display: block; }
+  .nowLabel { margin-bottom: 0.35rem; }
+}

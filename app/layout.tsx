@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import { Page } from "@/components/Page";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bibek Gyawali",
+  title: {
+    default: "Bibek Gyawali",
+    template: "%s — Bibek Gyawali",
+  },
   description:
-    "Electronics and Communication Engineering graduate working on embedded control, biomedical instrumentation, and signal processing.",
+    "Electronics engineer in Kathmandu working on closed-loop control, biomedical instrumentation and signal processing.",
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='system-ui'>B</text></svg>",
   },
@@ -23,7 +27,9 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: restoreTheme }} />
       </head>
-      <body>{children}</body>
+      <body>
+        <Page>{children}</Page>
+      </body>
     </html>
   );
 }
