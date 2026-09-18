@@ -57,3 +57,5 @@ npm run build   # static export to out/
 `out/` is plain static output — GitHub Pages, Netlify, Vercel, or any file
 server. Drop `output: "export"` from `next.config.ts` if you later want server
 features.
+
+
