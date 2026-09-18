@@ -57,10 +57,15 @@ a {
 
 a:hover { text-decoration-color: currentColor; }
 
-a:focus-visible {
+a:focus-visible, button:focus-visible {
   outline: 1px solid var(--ink);
   outline-offset: 3px;
   border-radius: 1px;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -68,6 +73,11 @@ a:focus-visible {
 }
 
 /* Printing the page yields a clean CV. */
+@page {
+  margin: 1.25cm 1.5cm;
+  size: A4 portrait;
+}
+
 @media print {
   :root {
     --ink: #000;
@@ -77,11 +87,7 @@ a:focus-visible {
     --rule: #ccc;
   }
 
-  body { font-size: 10.5pt; line-height: 1.45; }
-  a { text-decoration: none; }
-  a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 8pt;
-    color: #555;
-  }
+  body { font-size: 10pt; line-height: 1.45; background: #fff !important; color: #000 !important; }
+  a { text-decoration: none !important; color: #000 !important; }
 }
+
