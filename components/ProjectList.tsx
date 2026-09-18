@@ -2,7 +2,16 @@ import Link from "next/link";
 import type { Project } from "@/content/projects";
 import styles from "./ProjectList.module.css";
 
-export function ProjectList({ projects }: { projects: Project[] }) {
+export function ProjectList({
+  projects,
+  headingLevel = "h3",
+}: {
+  projects: Project[];
+  /** h2 when the list is the page's own content; h3 when it sits inside a Section. */
+  headingLevel?: "h2" | "h3";
+}) {
+  const Heading = headingLevel;
+
   return (
     <ul className={styles.list}>
       {projects.map((project) => (
@@ -10,7 +19,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
           <Link href={`/work/${project.slug}`} className={styles.link}>
             <span className={styles.year}>{project.year}</span>
             <span>
-              <h3 className={styles.title}>{project.title}</h3>
+              <Heading className={styles.title}>{project.title}</Heading>
               <p className={styles.summary}>{project.summary}</p>
             </span>
             <span className={styles.kind}>{project.kind}</span>

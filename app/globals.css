@@ -1,7 +1,7 @@
 :root {
   --ink:       #16130f;
   --ink-soft:  #55504a;
-  --ink-faint: #8a847c;
+  --ink-faint: #767068;
   --paper:     #fbfaf8;
   --rule:      #e2ded7;
 
@@ -18,7 +18,7 @@
 html[data-theme="dark"] {
   --ink:       #ece8e1;
   --ink-soft:  #a7a199;
-  --ink-faint: #6f6a63;
+  --ink-faint: #837d75;
   --paper:     #100f0e;
   --rule:      #2a2724;
 

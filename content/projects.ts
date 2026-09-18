@@ -9,6 +9,10 @@ export type Project = {
   lede: string;
   facts: { term: string; description: string }[];
   repo?: string;
+  /** Assessment, for work that carries one. */
+  grade?: string;
+  /** Condensed bullets for the CV page; falls back to `summary`. */
+  cv?: string[];
   /** Optional link to a running deployment. */
   demo?: string;
   sections: { heading: string; body: string[] }[];
@@ -20,8 +24,14 @@ export const projects: Project[] = [
     title: "Low-cost automated ventilator",
     year: "2025",
     kind: "Undergraduate thesis",
+    grade: "76/100",
     /** Add the repository link here once the code is public. */
     repo: "",
+    cv: [
+      "Designed and prototyped a fully functional closed-loop ventilator, implementing PID control in embedded C on Arduino to regulate tidal volume and airway pressure against the non-linear dynamics of a bag-valve pneumatic system.",
+      "Instrumented the device with a MAX30100 pulse oximeter, MPX5010 differential pressure sensor and LM35 temperature sensor over I²C and analog interfaces, sampling SpO₂, heart rate and airway pressure fast enough to sit inside the control loop rather than merely report after it.",
+      "Built the patient monitoring interface with live waveform visualisation, carrying the system end to end from hardware prototype to clinical-facing software.",
+    ],
     summary:
       "A closed-loop ventilator built from a bag valve mask, three sensors and an Arduino.",
     lede: "My undergraduate thesis: a working ventilator assembled from parts a hospital workshop could source and repair, with the control loop and the patient monitor both written from scratch.",
@@ -84,6 +94,11 @@ export const projects: Project[] = [
       },
       { term: "Best", description: "Random forest — R² 0.84, MAPE 4.94%" },
       { term: "Deployed", description: "Streamlit predictor (private)" },
+    ],
+    cv: [
+      "Collected and normalised a dataset of 67 completed residential buildings across the Kathmandu Valley, adjusting every cost to a 2025/26 base year so that figures separated by years of material inflation could be compared.",
+      "Compared a linear baseline, a random forest, a k-fold cross-validated feed-forward ANN, and tuned XGBoost and LightGBM models; the random forest reached R² 0.84 at 4.94% MAPE, and the linear baseline matched it at R² 0.85.",
+      "Reported the negative result — that the additional capacity of the neural network is unjustified at this sample size — supported by residual, Q–Q, error-distribution and feature-importance diagnostics.",
     ],
     repo: "https://github.com/bibekgyawali2/ANN-based-Prediction-of-Final-Construction-Cost-of-Residential-Buildings-in-Kathmandu-Valley-at-an-E",
     /**

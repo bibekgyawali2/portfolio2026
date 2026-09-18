@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Page } from "@/components/Page";
+import { identity } from "@/content/profile";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -7,8 +8,12 @@ export const metadata: Metadata = {
     default: "Bibek Gyawali",
     template: "%s — Bibek Gyawali",
   },
-  description:
-    "Electronics engineer in Kathmandu working on closed-loop control, biomedical instrumentation and signal processing.",
+  description: identity.summary,
+  openGraph: {
+    title: identity.name,
+    description: identity.summary,
+    type: "profile",
+  },
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='system-ui'>B</text></svg>",
   },

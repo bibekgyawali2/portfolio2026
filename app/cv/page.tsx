@@ -14,7 +14,6 @@ import {
   languages,
   referees,
   skills,
-  thesis,
 } from "@/content/profile";
 import { projects } from "@/content/projects";
 import styles from "./page.module.css";
@@ -38,25 +37,46 @@ const certifications = [
   .filter((item) => item.description)
   .concat(awards);
 
-const researchProjects = projects.filter((p) => p.kind === "Research project");
+const research = projects.filter(
+  (p) => p.kind === "Undergraduate thesis" || p.kind === "Research project",
+);
 const selfDirected = projects.filter((p) => p.kind === "Machine learning");
+
+/** The line under a research title: what it was, how it was assessed, who supervised it. */
+function provenance(project: (typeof projects)[number]) {
+  return [
+    project.kind,
+    project.grade && `assessed ${project.grade}`,
+    project.kind === "Undergraduate thesis" &&
+      credentials.supervisor &&
+      `supervised by ${credentials.supervisor}`,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
 
 export default function CV() {
   return (
     <>
-      <PageHeader kicker="Curriculum vitae" title={identity.name} />
-
-      <p className={styles.contact}>
-        {identity.location} · <a href={`mailto:${identity.email}`}>{identity.email}</a>
-        {identity.links.map((link) => (
-          <span key={link.href}>
-            {" · "}
-            <a href={link.href}>{link.label}</a>
-          </span>
-        ))}
-      </p>
-
-      <p className={styles.hint}>Print this page for a PDF copy.</p>
+      <PageHeader
+        kicker="Curriculum vitae"
+        title={identity.name}
+        meta={
+          <>
+            <p>
+              {identity.location} ·{" "}
+              <a href={`mailto:${identity.email}`}>{identity.email}</a>
+              {identity.links.map((link) => (
+                <span key={link.href}>
+                  {" · "}
+                  <a href={link.href}>{link.label}</a>
+                </span>
+              ))}
+            </p>
+            <p className={styles.hint}>Print this page for a PDF copy.</p>
+          </>
+        }
+      />
 
       <Section title="Areas of interest">
         <DataList
@@ -90,31 +110,20 @@ export default function CV() {
       </Section>
 
       <Section title="Research">
-        <Entry
-          when={thesis.period}
-          title={thesis.title}
-          href={credentials.thesisUrl || undefined}
-          where={[
-            "Undergraduate thesis",
-            `assessed ${thesis.grade}`,
-            credentials.supervisor && `supervised by ${credentials.supervisor}`,
-          ]
-            .filter(Boolean)
-            .join(" · ")}
-          body={thesis.body}
-        />
-
-        {researchProjects.map((project) => (
+        {research.map((project) => (
           <Entry
             key={project.slug}
             when={project.year}
             title={project.title}
-            href={project.repo}
-            where={project.facts
-              .filter((fact) => fact.term === "Data" || fact.term === "Best")
-              .map((fact) => fact.description)
-              .join(" · ")}
-            body={[project.summary]}
+            href={
+              project.repo ||
+              (project.kind === "Undergraduate thesis"
+                ? credentials.thesisUrl
+                : "") ||
+              undefined
+            }
+            where={provenance(project)}
+            body={project.cv ?? [project.summary]}
           />
         ))}
       </Section>

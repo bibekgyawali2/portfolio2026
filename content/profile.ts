@@ -61,17 +61,14 @@ export const interests = [
   {
     label: "Control",
     title: "Embedded control and real-time systems",
-    body: "Closed-loop control on microcontrollers: deterministic timing, sensor-in-the-loop tuning, and stability under the constraints of low-cost hardware.",
   },
   {
     label: "Biomedical",
     title: "Biomedical instrumentation",
-    body: "Low-cost sensing and patient monitoring for clinical settings where standard equipment is out of reach — acquisition, conditioning, and the validation such devices require.",
   },
   {
     label: "Signals",
     title: "Signal processing and applied machine learning",
-    body: "Time-series modelling and evaluation under noise, drift, and severe class imbalance, with attention to whether a reported metric means anything.",
   },
 ];
 
@@ -105,17 +102,6 @@ export const coursework = [
       "Microprocessors and embedded systems, instrumentation, digital and analog electronics",
   },
 ];
-
-export const thesis = {
-  period: "2024–2025",
-  title: "Low-Cost Automated Ventilator with Real-Time Patient Monitoring",
-  grade: "76/100",
-  body: [
-    "Designed and prototyped a fully functional closed-loop ventilator, implementing PID control in embedded C on Arduino to regulate tidal volume and airway pressure against the non-linear dynamics of a bag-valve pneumatic system.",
-    "Instrumented the device with a MAX30100 pulse oximeter, MPX5010 differential pressure sensor and LM35 temperature sensor over I²C and analog interfaces, sampling SpO₂, heart rate and airway pressure fast enough to sit inside the control loop rather than merely report after it.",
-    "Built the patient monitoring interface with live waveform visualisation, carrying the system end to end from hardware prototype to clinical-facing software.",
-  ],
-};
 
 export const experience = {
   preamble:

@@ -14,10 +14,10 @@ export default function Work() {
     <>
       <PageHeader
         kicker="Work"
-        title="Three projects, and what each one actually taught me."
-        lede="A ventilator built for my thesis, and two machine learning projects where the interesting part turned out to be the evaluation rather than the model."
+        title="What I have built, and what each one actually taught me."
+        lede="A ventilator built for my thesis, a cost-estimation study, and two machine learning projects where the interesting part turned out to be the evaluation rather than the model."
       />
-      <ProjectList projects={projects} />
+      <ProjectList projects={projects} headingLevel="h2" />
     </>
   );
 }
