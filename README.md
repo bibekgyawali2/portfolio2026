@@ -1,21 +1,43 @@
-# Portfolio - Bibek Gyawali
+# Portfolio — Bibek Gyawali
 
-Minimalist, performance-oriented portfolio site designed with a "Senior Software Architect" aesthetic.
-Focuses on information density, semantic HTML, and raw performance.
+A single static page, built with Next.js (App Router) and exported to plain HTML.
+Weighted toward academic and research background for master's applications.
 
-## Design Philosophy
+## Editing
 
-- **Layout**: Single-column, max-width 800px.
-- **Typography**: Inter (Headers) & IBM Plex Mono (Data/Meta).
-- **Performance**: Vanilla CSS, minimal JS, no frameworks.
-- **Theme**: Paper & Ink (High contrast white/black with purposeful blue accent).
+All content lives in [`content/profile.ts`](content/profile.ts) as typed data.
+The page in [`app/page.tsx`](app/page.tsx) composes it from a handful of
+components; nothing else needs touching to change what the site says.
 
-## Structure
+`*asterisks*` inside content strings render as italics.
 
-- `index.html`: Semantic markup content.
-- `styles.css`: Utility-free, clean CSS variables.
-- `script.js`: Minimal logic.
+## Components
 
-## Deployment
+| Component | Purpose |
+| --- | --- |
+| `Page` / `Footer` | Page shell and closing line |
+| `Masthead` | Name, summary, contact row |
+| `Section` | Titled section with optional lede |
+| `Entry` | Date column + title, affiliation, bullets, note |
+| `DataList` | Two-column term/description list |
+| `Prose` | Paragraph block |
 
-Zero-dependency static site. Compatible with GitHub Pages, Netlify, Vercel, or any raw file server.
+## Design
+
+One column, hairline rules, system font stack. No icons, no images, no web
+fonts, no client-side JavaScript. Dark mode follows the OS setting. Printing the
+page produces a clean CV with URLs expanded.
+
+## Commands
+
+```sh
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # static export to out/
+```
+
+## Deploy
+
+`out/` is plain static output — GitHub Pages, Netlify, Vercel, or any file
+server. On Vercel, drop `output: "export"` from `next.config.ts` if you later
+want server features.

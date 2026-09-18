@@ -1,0 +1,29 @@
+.section {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+  margin-bottom: 3.25rem;
+}
+
+.heading {
+  margin: 0 0 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.lede {
+  max-width: 36rem;
+  margin: -0.5rem 0 1.75rem;
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+}
+
+@media print {
+  .section {
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,87 @@
+:root {
+  --ink:       #16130f;
+  --ink-soft:  #55504a;
+  --ink-faint: #8a847c;
+  --paper:     #fbfaf8;
+  --rule:      #e2ded7;
+
+  --measure: 44rem;
+  --gutter: 1.5rem;
+  --col: 6rem;
+
+  color-scheme: light;
+
+  --sans: ui-sans-serif, -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+html[data-theme="dark"] {
+  --ink:       #ece8e1;
+  --ink-soft:  #a7a199;
+  --ink-faint: #6f6a63;
+  --paper:     #100f0e;
+  --rule:      #2a2724;
+
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+p { margin: 0 0 0.75rem; text-wrap: pretty; }
+p:last-child { margin-bottom: 0; }
+
+em { font-style: italic; }
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--rule);
+  transition: text-decoration-color 120ms linear;
+}
+
+a:hover { text-decoration-color: currentColor; }
+
+a:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* Printing the page yields a clean CV. */
+@media print {
+  :root {
+    --ink: #000;
+    --ink-soft: #222;
+    --ink-faint: #555;
+    --paper: #fff;
+    --rule: #ccc;
+  }
+
+  body { font-size: 10.5pt; line-height: 1.45; }
+  a { text-decoration: none; }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+  }
+}
