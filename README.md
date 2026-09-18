@@ -45,6 +45,15 @@ Light by default regardless of OS setting; the choice persists in
 `localStorage` and is re-applied before first paint. Nav and footer are hidden
 when printing so `/cv` prints clean, with URLs expanded.
 
+## SEO
+
+- [`content/site.ts`](content/site.ts) holds the canonical origin, the search
+  title and description, and the `Person` structured data. Everything else —
+  canonicals, sitemap, robots, Open Graph — derives from it.
+- `sitemap.xml` and `robots.txt` are generated at build from the route list.
+- The Open Graph card is rendered from the headline at build time; `vercel.json`
+  pins its Content-Type, and a `.png` copy is published alongside it.
+
 ## Commands
 
 ```sh

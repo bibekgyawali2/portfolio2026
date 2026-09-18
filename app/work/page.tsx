@@ -6,7 +6,8 @@ import { projects } from "@/content/projects";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Projects in embedded control, instrumentation and applied machine learning.",
+    "Projects by Bibek Gyawali in signal processing, embedded control, instrumentation and applied machine learning.",
+  alternates: { canonical: "/work" },
 };
 
 export default function Work() {

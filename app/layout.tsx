@@ -1,18 +1,45 @@
 import type { Metadata } from "next";
 import { Page } from "@/components/Page";
+import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
+import { personSchema, site } from "@/content/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: "Bibek Gyawali",
-    template: "%s — Bibek Gyawali",
+    default: site.title,
+    template: `%s — ${identity.name}`,
   },
-  description: identity.summary,
+  description: site.description,
+  applicationName: identity.name,
+  authors: [{ name: identity.name, url: site.url }],
+  creator: identity.name,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: identity.name,
-    description: identity.summary,
     type: "profile",
+    siteName: identity.name,
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    locale: site.locale,
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: site.title }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: ["/og.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='system-ui'>B</text></svg>",
@@ -31,6 +58,7 @@ export default function RootLayout({
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: restoreTheme }} />
+        <StructuredData data={personSchema} />
       </head>
       <body>
         <Page>{children}</Page>

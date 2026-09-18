@@ -4,6 +4,9 @@ import Link from "next/link";
 import { DataList } from "@/components/DataList";
 import { ProjectBody } from "@/components/ProjectBody";
 import { PageHeader } from "@/components/PageHeader";
+import { StructuredData } from "@/components/StructuredData";
+import { identity } from "@/content/profile";
+import { site } from "@/content/site";
 import { projectBySlug, projects } from "@/content/projects";
 import styles from "./page.module.css";
 
@@ -16,9 +19,19 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const project = projectBySlug((await params).slug);
 
-  return project
-    ? { title: project.title, description: project.summary }
-    : {};
+  if (!project) return {};
+
+  return {
+    title: project.title,
+    description: project.summary,
+    alternates: { canonical: `/work/${project.slug}` },
+    openGraph: {
+      type: "article",
+      title: project.title,
+      description: project.summary,
+      url: `/work/${project.slug}`,
+    },
+  };
 }
 
 export default async function ProjectPage({ params }: Params) {
@@ -28,6 +41,20 @@ export default async function ProjectPage({ params }: Params) {
 
   return (
     <article>
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: project.title,
+          headline: project.title,
+          description: project.summary,
+          url: `${site.url}/work/${project.slug}`,
+          author: { "@type": "Person", name: identity.name, url: site.url },
+          datePublished: project.year.slice(-4),
+          keywords: project.facts.map((fact) => fact.description).join(", "),
+          ...(project.repo ? { codeRepository: project.repo } : {}),
+        }}
+      />
       <PageHeader
         kicker={`${project.kind} · ${project.year}`}
         title={project.title}

@@ -20,7 +20,9 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "CV",
-  description: "Curriculum vitae — Bibek Gyawali.",
+  description:
+    "Curriculum vitae of Bibek Gyawali — B.E. Electronics and Communication Engineering, Tribhuvan University, Kathmandu. Research, experience, skills and certifications.",
+  alternates: { canonical: "/cv" },
 };
 
 /** Credentials that have been filled in. Empty fields are left out entirely. */
