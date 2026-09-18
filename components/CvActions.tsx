@@ -6,10 +6,6 @@ import styles from "./CvActions.module.css";
 export function CvActions({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText(email);
@@ -23,32 +19,6 @@ export function CvActions({ email }: { email: string }) {
 
   return (
     <aside className={styles.toolbar} aria-label="CV actions">
-      <button
-        type="button"
-        onClick={handlePrint}
-        className={styles.actionButton}
-        title="Print or export CV to PDF (Cmd+P / Ctrl+P)"
-      >
-        <svg
-          className={styles.icon}
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <polyline points="6 9 6 2 18 2 18 9" />
-          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-          <rect x="6" y="14" width="12" height="8" />
-        </svg>
-        <span>Print / Save PDF</span>
-        <kbd className={styles.kbd}>⌘P</kbd>
-      </button>
-
       <button
         type="button"
         onClick={handleCopyEmail}

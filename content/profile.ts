@@ -5,7 +5,7 @@
 export const identity = {
   name: "Bibek Gyawali",
   summary:
-    "Electronics and Communication Engineering graduate, Tribhuvan University. I work on closed-loop control, biomedical instrumentation, and learning from signals on resource-constrained hardware.",
+    "Electronics and Communication Engineering graduate, Tribhuvan University, with research interests across 5G wireless systems, machine learning, and software engineering.",
   location: "Kathmandu, Nepal",
   email: "gyawali.b@outlook.com",
   links: [
@@ -26,12 +26,12 @@ export const nav = [
 export const home = {
   /** The opening line. Set in display type; keep it to one idea. */
   display:
-    "I build instruments — things that measure something real and then act on it.",
+    "5G wireless systems, artificial intelligence, and software engineering.",
   intro: [
     "I am an electronics engineer in Kathmandu. My thesis was a ventilator: a closed-loop device built from parts a hospital workshop could source, with a PID controller holding airway pressure against lungs that do not behave linearly.",
     "Before that, and alongside the degree, I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, a retail platform running in 1,000 shops. Useful work, and it paid for the degree, but the ventilator is the problem I want to keep.",
   ],
-  now: "Applying for master's study in control systems, signal processing and biomedical instrumentation.",
+  now: "Applying for master's study in 5G wireless systems, artificial intelligence, and software engineering.",
 };
 
 export const about = {
