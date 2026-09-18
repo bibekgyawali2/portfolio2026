@@ -11,7 +11,7 @@ export default function Home() {
       <Lede display={home.display} intro={home.intro} now={home.now} />
 
       <Section title="Selected work" more={{ href: "/work", label: "All work" }}>
-        <ProjectList projects={projects} />
+        <ProjectList projects={projects.slice(0, 3)} />
       </Section>
 
       <Section title="Elsewhere">

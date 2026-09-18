@@ -4,7 +4,16 @@ import { Entry } from "@/components/Entry";
 import { PageHeader } from "@/components/PageHeader";
 import { Prose } from "@/components/Prose";
 import { Section } from "@/components/Section";
-import { about, education, experience, interests } from "@/content/profile";
+import {
+  about,
+  coursework,
+  credentials,
+  education,
+  experience,
+  interests,
+  languages,
+  thesis,
+} from "@/content/profile";
 
 export const metadata: Metadata = {
   title: "About",
@@ -33,24 +42,32 @@ export default function About() {
         ))}
       </Section>
 
-      <Section title="Education">
+      <Section title="Education" more={{ href: "/cv", label: "Full CV" }}>
         {education.map((item) => (
           <Entry
             key={item.degree}
             when={item.period}
             title={item.degree}
             where={item.institution}
-            body={item.body}
             note={item.note}
           />
         ))}
+
+        <Entry
+          when="Thesis"
+          title={thesis.title}
+          href={credentials.thesisUrl || undefined}
+          where={`Assessed ${thesis.grade}${
+            credentials.supervisor ? ` · supervised by ${credentials.supervisor}` : ""
+          }`}
+        />
       </Section>
 
-      <Section
-        title="Engineering experience"
-        lede={experience.preamble}
-        more={{ href: "/cv", label: "Full CV" }}
-      >
+      <Section title="Coursework">
+        <DataList items={coursework} />
+      </Section>
+
+      <Section title="Engineering experience" lede={experience.preamble}>
         {experience.roles.map((role) => (
           <Entry
             key={role.institution}
@@ -63,12 +80,7 @@ export default function About() {
       </Section>
 
       <Section title="Languages">
-        <DataList
-          items={[
-            { term: "English", description: "Professional working proficiency" },
-            { term: "Nepali", description: "Native" },
-          ]}
-        />
+        <DataList items={languages} />
       </Section>
     </>
   );

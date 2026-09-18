@@ -1,11 +1,11 @@
 /**
- * All page content. Edit here; the page composes itself from this file.
+ * All page content. Edit here; the pages compose themselves from this file.
  */
 
 export const identity = {
   name: "Bibek Gyawali",
   summary:
-    "Electronics and Communication Engineering graduate, Tribhuvan University, with research interests across 5G wireless systems, machine learning, and software engineering.",
+    "Electronics and Communication Engineering graduate, Tribhuvan University. Embedded control, instrumentation and signal processing, with three years building production software.",
   location: "Kathmandu, Nepal",
   email: "gyawali.b@outlook.com",
   links: [
@@ -17,6 +17,28 @@ export const identity = {
   ],
 };
 
+/**
+ * ─────────────────────────────────────────────────────────────────────
+ * FILL THESE IN. An admissions committee looks for every one of them,
+ * and their absence is read as a weak answer rather than a missing one.
+ * Any field left empty simply will not render.
+ * ─────────────────────────────────────────────────────────────────────
+ */
+export const credentials = {
+  /** e.g. "78.4% (First Division)" or "3.42 / 4.0". The single most-screened number. */
+  gpa: "",
+  /** Foreign committees do not know Tribhuvan's scale. Tell them. */
+  gradingScale: "",
+  /** Add the four band scores and the exact month — committees check sub-scores. */
+  englishTest: "IELTS 7.0 overall (2026)",
+  /** Optional; only list if the score helps you. */
+  gre: "",
+  /** Thesis supervisor, with title and department. Names research provenance. */
+  supervisor: "",
+  /** Link to the thesis PDF. Hosting it costs nothing and proves the work exists. */
+  thesisUrl: "",
+};
+
 export const nav = [
   { label: "Work", href: "/work" },
   { label: "About", href: "/about" },
@@ -26,12 +48,12 @@ export const nav = [
 export const home = {
   /** The opening line. Set in display type; keep it to one idea. */
   display:
-    "5G wireless systems, artificial intelligence, and software engineering.",
+    "I build instruments — things that measure something real and then act on it.",
   intro: [
     "I am an electronics engineer in Kathmandu. My thesis was a ventilator: a closed-loop device built from parts a hospital workshop could source, with a PID controller holding airway pressure against lungs that do not behave linearly.",
-    "Before that, and alongside the degree, I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, a retail platform running in 1,000 shops. Useful work, and it paid for the degree, but the ventilator is the problem I want to keep.",
+    "Alongside the degree I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, a retail platform running in 1,000 shops. Useful work, and it paid for the degree, but the ventilator is the problem I want to keep.",
   ],
-  now: "Applying for master's study in 5G wireless systems, artificial intelligence, and software engineering.",
+  now: "Applying for master's study in systems that sense, compute and act — control, instrumentation and signal processing.",
 };
 
 export const about = {
@@ -39,8 +61,8 @@ export const about = {
   story: [
     "I came to engineering through software, which is the usual route here: it pays, it is learnable from a laptop, and there is real demand. For three years I built mobile systems for Nepali municipalities and businesses — the digital governance application for Kathmandu Metropolitan City among them — and I learned the thing that production teaches and coursework cannot, which is what it costs to keep a system correct once people depend on it and you cannot take it back.",
     "The thesis pulled me back to hardware. Building a ventilator meant confronting a plant that fights you: a bag valve mask whose resistance shifts through the stroke and shifts again with the patient. A timer cannot handle that; a closed loop can. Getting a PID controller to hold tidal volume against real pneumatics, with three sensors feeding it over I²C and analog lines, was the most interesting problem I have been given, and I got it working.",
-    "I also know exactly how far short of rigorous that work fell. I tuned the gains by hand because I had no model of the plant, and I could demonstrate the device holding its set point without being able to state a stability margin. Working and characterised are not the same thing, and the distance between them is the thing I want to close.",
-    "So: a master's, in control theory and statistical signal processing, with the research training to evaluate a system rather than merely demonstrate one. Longer term I want to work on instrumentation that can be deployed where the expensive version never arrives.",
+    "I also know how far short of rigorous that work fell. I tuned the gains by hand because I had no model of the plant, and I could demonstrate the device holding its set point without being able to state a stability margin. Working and characterised are not the same thing, and the distance between them is what I want to close.",
+    "So: a master's, with the mathematics and the research training to evaluate a system rather than merely demonstrate one. Longer term I want to work on instrumentation that can be deployed where the expensive version never arrives.",
   ],
 };
 
@@ -67,65 +89,67 @@ export const education = [
     period: "2017–2025",
     degree: "B.E. Electronics and Communication Engineering",
     institution: "Tribhuvan University, Kathmandu",
-    body: [
-      "Thesis: *Low-Cost Automated Ventilator with Real-Time Patient Monitoring* — 76/100.",
-      "Coursework: digital signal processing, control systems, microprocessors and embedded systems, instrumentation, electromagnetics, probability and statistics, radar technology.",
-    ],
-    note: "Completed while working full-time as a software engineer from 2022 onward.",
+    /**
+     * Eight years on a four-year degree is the first thing a reader will
+     * question. Answer it before they ask. Edit this to the true account.
+     */
+    note: "Programme duration reflects Tribhuvan University's delayed academic calendar over this period, alongside full-time engineering work from 2022.",
   },
 ];
 
-export const research = [
+export const coursework = [
   {
-    period: "Thesis",
-    title: "Low-Cost Automated Ventilator with Real-Time Patient Monitoring",
-    body: [
-      "Designed and prototyped a fully functional closed-loop ventilator, implementing PID control in embedded C on Arduino to regulate tidal volume and airway pressure against the non-linear dynamics of a bag-valve pneumatic system.",
-      "Instrumented the device with a MAX30100 pulse oximeter, MPX5010 differential pressure sensor, and LM35 temperature sensor over I²C and analog interfaces, acquiring SpO₂, heart rate, and lung pressure at rates sufficient to close the control loop.",
-      "Built the monitoring interface for live waveform visualisation, carrying the system end to end from hardware prototype to clinical-facing software.",
-    ],
+    term: "Mathematics",
+    description:
+      "Engineering Mathematics I–IV (calculus, linear algebra, differential equations, complex variables and transforms), probability and statistics, numerical methods",
   },
   {
-    period: "2023",
-    title: "Time-series forecasting of NEPSE equity prices with LSTMs",
-    href: "https://github.com/bibekgyawali2/Stock-Market-Prediction-using-LSTM-NEPSE-Dataset",
-    body: [
-      "Trained a recurrent architecture to forecast closing prices on the Nepal Stock Exchange, with feature engineering and windowing over a thin, noisy emerging-market series.",
-      "Evaluated by RMSE against observed trends, treating the gap between plausible-looking predictions and genuine predictive power as the result worth reporting.",
-    ],
+    term: "Signals",
+    description:
+      "Digital signal processing, control systems, communication systems, electromagnetics, radar technology",
   },
   {
-    period: "2023",
-    title: "Fraud detection under severe class imbalance",
-    href: "https://github.com/bibekgyawali2/Credit-Card-Fraud-Detection-using-Logistic-Regression",
-    body: [
-      "Built a logistic regression pipeline on a real transaction dataset where the positive class is a fraction of a percent, applying resampling to correct the imbalance.",
-      "Assessed with precision, recall, and AUC-ROC rather than accuracy, which is uninformative at this skew.",
-    ],
+    term: "Hardware",
+    description:
+      "Microprocessors and embedded systems, instrumentation, digital and analog electronics",
   },
 ];
+
+export const thesis = {
+  period: "2024–2025",
+  title: "Low-Cost Automated Ventilator with Real-Time Patient Monitoring",
+  grade: "76/100",
+  body: [
+    "Designed and prototyped a fully functional closed-loop ventilator, implementing PID control in embedded C on Arduino to regulate tidal volume and airway pressure against the non-linear dynamics of a bag-valve pneumatic system.",
+    "Instrumented the device with a MAX30100 pulse oximeter, MPX5010 differential pressure sensor and LM35 temperature sensor over I²C and analog interfaces, sampling SpO₂, heart rate and airway pressure fast enough to sit inside the control loop rather than merely report after it.",
+    "Built the patient monitoring interface with live waveform visualisation, carrying the system end to end from hardware prototype to clinical-facing software.",
+  ],
+};
 
 export const experience = {
   preamble:
-    "Three years of production engineering, concurrent with my degree. It funded my studies and taught me what it costs to keep a system correct once real people depend on it.",
+    "Three years of production engineering, concurrent with the degree. It funded my studies and taught me what it costs to keep a system correct once people depend on it.",
   roles: [
     {
-      period: "2025–now",
+      period: "Dec 2025 – present",
       role: "Mobile Application Developer",
       institution: "Kingsoft, Kathmandu",
       body: [
         "Architected a Flutter codebase on the BLoC pattern and built the CI/CD and automated test pipeline in GitHub Actions across iOS and Android.",
         "Profiled and removed performance bottlenecks — widget tree, memory, lazy loading — for low-end Android hardware, which is most of the installed base here.",
       ],
+      /** A reader will notice the gap before this role. Account for it. */
+      note: "",
     },
     {
-      period: "2022–2024",
+      period: "Nov 2022 – Mar 2024",
       role: "Mobile Application Developer",
       institution: "CellApp / SmartPalika, Kathmandu",
       body: [
         "Built civic technology for 15+ municipal governments, including the digital governance application for Kathmandu Metropolitan City, serving over 100,000 citizens.",
         "Developed a retail SaaS platform with real-time inventory and billing, deployed to 1,000+ businesses, and presented the systems to government officials to drive adoption.",
       ],
+      note: "",
     },
   ],
 };
@@ -137,9 +161,9 @@ export const skills = [
       "Arduino (C/C++), PID control loops, sensor integration over I²C, SPI and analog, real-time data acquisition, signal conditioning",
   },
   {
-    term: "Machine learning",
+    term: "Scientific",
     description:
-      "Python, PyTorch, Keras, scikit-learn, NumPy, Pandas, Matplotlib",
+      "Python, NumPy, Pandas, Matplotlib, scikit-learn, PyTorch, Keras",
   },
   {
     term: "Programming",
@@ -147,28 +171,31 @@ export const skills = [
   },
   {
     term: "Engineering",
-    description:
-      "Flutter, React, Node.js, PostgreSQL, Docker, AWS, Git, GitHub Actions",
+    description: "Flutter, Node.js, PostgreSQL, Docker, AWS, Git, GitHub Actions",
   },
 ];
 
-export const also = [
+export const awards = [
   {
     term: "2023",
     description:
-      "Supervised Machine Learning: Regression and Classification — DeepLearning.AI, Andrew Ng",
+      "Award of Excellence, CellApp / SmartPalika — for contributions to civic technology development",
   },
   {
     term: "2023",
     description:
-      "Award of Excellence, CellApp / SmartPalika, for contributions to civic technology development",
-  },
-  {
-    term: "Networking",
-    description: "CCNA Networking Fundamentals, 45 hours — Himalaya College of Engineering",
-  },
-  {
-    term: "Languages",
-    description: "English (professional working proficiency), Nepali (native)",
+      "Supervised Machine Learning: Regression and Classification — DeepLearning.AI (Coursera), Andrew Ng",
   },
 ];
+
+export const languages = [
+  { term: "Nepali", description: "Native" },
+  {
+    term: "English",
+    description:
+      "Medium of instruction throughout secondary and undergraduate education",
+  },
+];
+
+/** Committees expect names. Add your supervisor and one professional referee. */
+export const referees: { term: string; description: string }[] = [];

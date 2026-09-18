@@ -309,6 +309,8 @@
 }
 
 /* Print Perfection */
+.block { margin-top: 1.5rem; }
+
 @media print {
   .container {
     padding-top: 0;

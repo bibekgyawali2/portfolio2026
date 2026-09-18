@@ -11,6 +11,8 @@
   font-size: 0.8125rem;
 }
 
+.gap { display: inline-block; width: 1.5rem; }
+
 .back {
   margin-top: 4rem;
   font-family: var(--mono);

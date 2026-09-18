@@ -36,9 +36,11 @@ export default async function ProjectPage({ params }: Params) {
 
       <div className={styles.facts}>
         <DataList items={project.facts} />
-        {project.repo ? (
+        {project.repo || project.demo ? (
           <p className={styles.repo}>
-            <a href={project.repo}>Source on GitHub →</a>
+            {project.repo ? <a href={project.repo}>Source on GitHub →</a> : null}
+            {project.repo && project.demo ? <span className={styles.gap} /> : null}
+            {project.demo ? <a href={project.demo}>Live predictor →</a> : null}
           </p>
         ) : null}
       </div>

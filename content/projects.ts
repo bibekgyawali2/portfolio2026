@@ -9,6 +9,8 @@ export type Project = {
   lede: string;
   facts: { term: string; description: string }[];
   repo?: string;
+  /** Optional link to a running deployment. */
+  demo?: string;
   sections: { heading: string; body: string[] }[];
 };
 
@@ -18,6 +20,8 @@ export const projects: Project[] = [
     title: "Low-cost automated ventilator",
     year: "2025",
     kind: "Undergraduate thesis",
+    /** Add the repository link here once the code is public. */
+    repo: "",
     summary:
       "A closed-loop ventilator built from a bag valve mask, three sensors and an Arduino.",
     lede: "My undergraduate thesis: a working ventilator assembled from parts a hospital workshop could source and repair, with the control loop and the patient monitor both written from scratch.",
@@ -56,6 +60,66 @@ export const projects: Project[] = [
         heading: "What I would do next",
         body: [
           "Proper system identification instead of hand tuning, a model-based controller with margins I can state, and validation against a calibrated test lung rather than a bench demonstration. That gap — between a device that works and a device whose behaviour is characterised — is most of why I am applying for master's study.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "construction-cost",
+    title: "Predicting building construction cost from early-stage design",
+    year: "2026",
+    kind: "Research project",
+    summary:
+      "A cost model for Kathmandu Valley residential buildings — where a linear baseline beat both the random forest and the neural network.",
+    lede: "A regression study on 67 residential buildings in the Kathmandu Valley, predicting final construction cost from design parameters available before ground is broken. The headline result is a negative one, and it is the part worth reporting.",
+    facts: [
+      { term: "Data", description: "67 buildings, cost adjusted to base year 2025/26" },
+      {
+        term: "Features",
+        description: "Plinth area, column count, storeys, foundation type, location",
+      },
+      {
+        term: "Models",
+        description: "Linear baseline, random forest, ANN (k-fold CV), XGBoost and LightGBM with grid search",
+      },
+      { term: "Best", description: "Random forest — R² 0.84, MAPE 4.94%" },
+      { term: "Deployed", description: "Streamlit predictor (private)" },
+    ],
+    repo: "https://github.com/bibekgyawali2/ANN-based-Prediction-of-Final-Construction-Cost-of-Residential-Buildings-in-Kathmandu-Valley-at-an-E",
+    /**
+     * The Streamlit deployment currently sits behind a login wall. Set it to
+     * public in the app's settings, then restore the link here:
+     * "https://bibekgyawali2-streamlit-test-web-u66b8i.streamlit.app/"
+     */
+    demo: "",
+    sections: [
+      {
+        heading: "The question",
+        body: [
+          "A client in Nepal commissioning a house commits to a budget long before anyone can cost the build properly. What they have at that point is a design: plinth area, storey count, number of columns, foundation type, location. The question is how much of the final cost is already determined by those few numbers.",
+          "I collected data on 67 completed residential buildings across the Kathmandu Valley and adjusted every figure to a 2025/26 base year, so that costs separated by several years of material inflation could be compared at all.",
+        ],
+      },
+      {
+        heading: "Method",
+        body: [
+          "I fitted a linear model as a baseline, then a random forest, then a feed-forward neural network trained with k-fold cross-validation and ensembling to compensate for the small sample. Separately I tuned XGBoost and LightGBM over a grid.",
+          "Evaluation went beyond a single score: residual analysis, Q-Q plots against normality, error distributions, feature importance, and a correlation heatmap over the predictors.",
+        ],
+      },
+      {
+        heading: "The result",
+        body: [
+          "The random forest reached R² 0.84 with a mean absolute percentage error under 5%, which is accurate enough to be useful at the design stage. The neural network reached R² 0.69 — clearly worse.",
+          "And the linear baseline scored R² 0.85. It matched or beat everything I threw at it.",
+          "With 67 samples and five predictors, the extra capacity of a neural network has nothing to learn from and a great deal to overfit to. That is not a disappointing outcome, it is the answer to the question: the relationship between these design parameters and final cost is close to linear, and the honest model is the simple one.",
+        ],
+      },
+      {
+        heading: "What I would fix",
+        body: [
+          "The sample is the binding constraint — 67 buildings is too few to separate location effects from size effects with confidence, and collecting several hundred would do more for the model than any architecture change.",
+          "I would also state uncertainty properly. The model returns a point estimate, but the useful output for someone setting a budget is an interval, and I did not produce one.",
         ],
       },
     ],
