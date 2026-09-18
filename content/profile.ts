@@ -49,12 +49,12 @@ export const nav = [
 export const home = {
   /** The opening line. Set in display type; keep it to one idea. */
   display:
-    "I build instruments — things that measure something real and then act on it.",
+    "Computer science and 5G wireless communication, from signal processing up.",
   intro: [
     "I am an electronics engineer in Kathmandu. My thesis was a ventilator: a closed-loop device built from parts a hospital workshop could source, with a PID controller holding airway pressure against lungs that do not behave linearly.",
     "Alongside the degree I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, a retail platform running in 1,000 shops. Useful work, and it paid for the degree, but the ventilator is the problem I want to keep.",
   ],
-  now: "Applying for master's study in systems that sense, compute and act — control, instrumentation and signal processing.",
+  now: "Applying for master's study in these areas.",
 };
 
 export const interests = [
