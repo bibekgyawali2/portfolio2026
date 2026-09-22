@@ -23,7 +23,7 @@ export const projects: Project[] = [
   {
     slug: "ventilator",
     title: "Low-cost automated ventilator",
-    year: "2025",
+    year: "2021",
     kind: "Undergraduate thesis",
     grade: "76/100",
     repo: "",
@@ -69,64 +69,6 @@ export const projects: Project[] = [
         heading: "Limitations & Future Work",
         body: [
           "Future iterations would benefit from formal mathematical system identification of patient airway impedance, transitioning from empirical PID to model-predictive control (MPC), and validation against a calibrated artificial test lung.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "construction-cost",
-    title: "Predicting building construction cost from early-stage design",
-    year: "2026",
-    kind: "Research project",
-    summary:
-      "Empirical regression modeling on 67 residential buildings in Kathmandu Valley comparing linear, ensemble, and neural network architectures.",
-    lede: "Regression analysis predicting final construction expenditure from preliminary structural and architectural design parameters in Kathmandu Valley.",
-    facts: [
-      { term: "Data", description: "67 buildings, cost adjusted to base year 2025/26" },
-      {
-        term: "Features",
-        description: "Plinth area, column count, storeys, foundation type, location",
-      },
-      {
-        term: "Models",
-        description: "Linear baseline, random forest, ANN (k-fold CV), XGBoost and LightGBM with grid search",
-      },
-      { term: "Best", description: "Random forest — R² 0.84, MAPE 4.94%" },
-      { term: "Deployed", description: "Streamlit predictor (private)" },
-    ],
-    cv: [
-      "Collected and normalised a dataset of 67 completed residential buildings across the Kathmandu Valley, adjusting every cost to a 2025/26 base year so that figures separated by years of material inflation could be compared.",
-      "Compared a linear baseline, a random forest, a k-fold cross-validated feed-forward ANN, and tuned XGBoost and LightGBM models; the random forest reached R² 0.84 at 4.94% MAPE, and the linear baseline matched it at R² 0.85.",
-      "Reported the negative result — that the additional capacity of the neural network is unjustified at this sample size — supported by residual, Q–Q, error-distribution and feature-importance diagnostics.",
-    ],
-    repo: "https://github.com/bibekgyawali2/ANN-based-Prediction-of-Final-Construction-Cost-of-Residential-Buildings-in-Kathmandu-Valley-at-an-E",
-    demo: "",
-    sections: [
-      {
-        heading: "Dataset & Normalization",
-        body: [
-          "In residential construction, financial commitments are made early in the architectural design phase before detailed quantity surveying is possible. This study collected structural and financial data from 67 completed residential buildings across Kathmandu Valley to evaluate whether preliminary design parameters reliably determine final construction expenditure.",
-          "Historical project costs were normalized to a 2025/26 base year using national construction material and labor price indices, allowing comparisons across projects completed under varying inflationary environments.",
-        ],
-      },
-      {
-        heading: "Modeling Methodology",
-        body: [
-          "Five predictive models were trained and evaluated: an Ordinary Least Squares (OLS) linear baseline, Random Forest regressor, a feed-forward Artificial Neural Network (ANN) with k-fold cross-validation, and hyperparameter-tuned XGBoost and LightGBM models. Key features included plinth area, column count, storey count, foundation type, and municipal location.",
-          "Model validation included residual analysis, Q–Q normality diagnostics, error distribution profiling, and feature importance rankings.",
-        ],
-      },
-      {
-        heading: "Evaluation & Findings",
-        body: [
-          "The Random Forest regressor attained an R² of 0.84 with a Mean Absolute Percentage Error (MAPE) of 4.94%, closely matched by the linear baseline at R² = 0.85. In contrast, the neural network achieved R² = 0.69, exhibiting pronounced variance and overfitting.",
-          "With a small tabular dataset of 67 observations and five primary predictors, the high parameter capacity of a deep neural network offered no advantage over linear and decision-tree baselines. The empirical relationship between preliminary physical dimensions and total build cost is predominantly linear at this scale.",
-        ],
-      },
-      {
-        heading: "Limitations",
-        body: [
-          "The 67-building sample limits granular geographic stratification across Kathmandu Valley sub-markets. Expanding the dataset and outputting calibrated prediction intervals rather than single-point estimates would improve practical decision utility.",
         ],
       },
     ],

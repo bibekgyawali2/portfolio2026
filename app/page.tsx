@@ -204,11 +204,11 @@ export default function Home() {
       </Section>
 
       <Section title="Certifications and awards" icon={<AwardIcon />}>
-        <div className="space-y-3">
+        <ul className="m-0 p-0 list-none space-y-1">
           {certifications.map((cert) => (
             <CertificationCard key={cert.title} cert={cert} />
           ))}
-        </div>
+        </ul>
       </Section>
 
       {referees.length ? (

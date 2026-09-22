@@ -57,7 +57,7 @@ export const experience = {
   roles: [
     {
       period: "Dec 2025 – present",
-      role: "Mobile Application Developer",
+      role: "Software Engineer",
       institution: "Kingsoft, Kathmandu",
       body: [
         "Architected a Flutter codebase on the BLoC pattern and built the CI/CD and automated test pipeline in GitHub Actions across iOS and Android.",
