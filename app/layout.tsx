@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Page } from "@/components/Page";
 import { StructuredData } from "@/components/StructuredData";
@@ -74,11 +75,13 @@ export default function RootLayout({
       data-theme="light"
       suppressHydrationWarning
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: restoreTheme }} />
-        <StructuredData data={personSchema} />
-      </head>
       <body>
+        <Script
+          id="theme-restore"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: restoreTheme }}
+        />
+        <StructuredData data={personSchema} />
         <Page>{children}</Page>
       </body>
     </html>

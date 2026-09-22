@@ -7,7 +7,6 @@ import {
   CpuIcon,
   ExternalLinkIcon,
   GithubIcon,
-  GlobeIcon,
   GraduationCapIcon,
   LinkedinIcon,
   MailIcon,
@@ -17,13 +16,14 @@ import {
 } from "@/components/Icons";
 import { PageHeader } from "@/components/PageHeader";
 import { Section } from "@/components/Section";
+import { CertificationCard } from "@/components/CertificationCard";
+import { CopyEmail } from "@/components/CopyEmail";
 import {
-  awards,
+  certifications,
   credentials,
   education,
   experience,
   identity,
-  languages,
   referees,
   skills,
 } from "@/content/profile";
@@ -40,18 +40,26 @@ export const metadata: Metadata = {
 const record = [
   { term: "Grade", description: credentials.gpa },
   { term: "Scale", description: credentials.gradingScale },
+  {
+    term: "English test",
+    description: credentials.englishTest
+      ? `${credentials.englishTest} (${credentials.englishTestDate})`
+      : "",
+  },
+  {
+    term: "GRE",
+    description: credentials.gre
+      ? `${credentials.gre} (${credentials.greDate})`
+      : "",
+  },
 ].filter((item) => item.description);
 
-/** Test scores sit with the certifications, not with the degree. */
-const certifications = [
-  { term: credentials.englishTestDate, description: credentials.englishTest },
-  { term: credentials.greDate, description: credentials.gre },
-]
-  .filter((item) => item.description)
-  .concat(awards);
-
-const research = projects.filter((p) => p.kind === "Undergraduate thesis");
-const selfDirected = projects.filter((p) => p.kind === "Machine learning");
+const research = projects.filter(
+  (p) => p.kind === "Undergraduate thesis" || p.kind === "Research project"
+);
+const engineeringAndMl = projects.filter(
+  (p) => p.kind !== "Undergraduate thesis" && p.kind !== "Research project"
+);
 
 function provenance(project: (typeof projects)[number]) {
   return [
@@ -94,13 +102,16 @@ export default function Home() {
             <span className="opacity-45 select-none" aria-hidden="true">
               ·
             </span>
-            <a
-              href={`mailto:${identity.email}`}
-              className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
-            >
-              <MailIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-email opacity-85 shrink-0 transition-all duration-120 group-hover:opacity-100 group-hover:-translate-y-px" />
-              <span>{identity.email}</span>
-            </a>
+            <span className="inline-flex items-center gap-1">
+              <a
+                href={`mailto:${identity.email}`}
+                className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
+              >
+                <MailIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-email opacity-85 shrink-0 transition-all duration-120 group-hover:opacity-100 group-hover:-translate-y-px" />
+                <span>{identity.email}</span>
+              </a>
+              <CopyEmail email={identity.email} />
+            </span>
             {identity.links.map((link) => (
               <span key={link.href} className="inline-flex items-center gap-2">
                 <span className="opacity-45 select-none" aria-hidden="true">
@@ -171,17 +182,18 @@ export default function Home() {
       </Section>
 
       <Section
-        title="Self-directed projects"
+        title="Engineering and applied projects"
         icon={<TerminalIcon />}
-        lede="Independent work undertaken to explore the methods."
+        lede="Civic technology platforms and machine learning systems."
         more={{ href: "/projects", label: "All projects" }}
       >
-        {selfDirected.map((project) => (
+        {engineeringAndMl.map((project) => (
           <Entry
             key={project.slug}
             when={project.year}
             title={project.title}
             href={`/projects/${project.slug}`}
+            where={project.kind}
             body={[project.summary]}
           />
         ))}
@@ -192,11 +204,11 @@ export default function Home() {
       </Section>
 
       <Section title="Certifications and awards" icon={<AwardIcon />}>
-        <DataList items={certifications} />
-      </Section>
-
-      <Section title="Languages" icon={<GlobeIcon />}>
-        <DataList items={languages} />
+        <div className="space-y-3">
+          {certifications.map((cert) => (
+            <CertificationCard key={cert.title} cert={cert} />
+          ))}
+        </div>
       </Section>
 
       {referees.length ? (

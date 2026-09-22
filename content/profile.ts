@@ -20,8 +20,8 @@ export const identity = {
 export const credentials = {
   gpa: "",
   gradingScale: "",
-  englishTest: "IELTS 7.0 overall",
-  englishTestDate: "2026",
+  englishTest: "",
+  englishTestDate: "",
   gre: "",
   greDate: "",
   supervisor: "",
@@ -99,25 +99,40 @@ export const skills = [
   },
 ];
 
+export type Certification = {
+  title: string;
+  issuer: string;
+  year: string;
+  logo: string;
+  href?: string;
+};
+
+export const certifications: Certification[] = [
+  {
+    title: "Supervised Machine Learning: Regression and Classification",
+    issuer: "DeepLearning.AI",
+    year: "2023",
+    logo: "/logos/deeplearning-ai.png",
+    href: "https://www.coursera.org/learn/machine-learning",
+  },
+  {
+    title: "Award of Excellence",
+    issuer: "CellApp / SmartPalika",
+    year: "2023",
+    logo: "/logos/smartpalika.png",
+    href: "https://smartpalika.org",
+  },
+];
+
 export const awards = [
   {
     term: "2023",
-    description:
-      "Award of Excellence, CellApp / SmartPalika",
+    description: "Award of Excellence, CellApp / SmartPalika",
   },
   {
     term: "2023",
     description:
       "Supervised Machine Learning: Regression and Classification — DeepLearning.AI (Coursera)",
-  },
-];
-
-export const languages = [
-  { term: "Nepali", description: "Native" },
-  {
-    term: "English",
-    description:
-      "Medium of instruction throughout secondary and undergraduate education",
   },
 ];
 

@@ -8,7 +8,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
 import { site } from "@/content/site";
 import { projectBySlug, projects } from "@/content/projects";
-import { GithubIcon, ExternalLinkIcon } from "@/components/Icons";
+import { GithubIcon, ExternalLinkIcon, GooglePlayIcon } from "@/components/Icons";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -103,8 +103,17 @@ export default async function ProjectPage({ params }: Params) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <ExternalLinkIcon className="w-3.5 h-3.5 shrink-0" />
-                <span>Live predictor</span>
+                {project.demo.includes("play.google.com") ? (
+                  <GooglePlayIcon className="w-3.5 h-3.5 shrink-0" />
+                ) : (
+                  <ExternalLinkIcon className="w-3.5 h-3.5 shrink-0" />
+                )}
+                <span>
+                  {project.demoLabel ||
+                    (project.demo.includes("play.google.com")
+                      ? "View on Google Play"
+                      : "Live deployment")}
+                </span>
               </a>
             ) : null}
           </div>

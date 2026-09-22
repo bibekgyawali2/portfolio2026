@@ -13,8 +13,9 @@ export type Project = {
   grade?: string;
   /** Condensed bullets for the CV page; falls back to `summary`. */
   cv?: string[];
-  /** Optional link to a running deployment. */
+  /** Optional link to a running deployment or app store. */
   demo?: string;
+  demoLabel?: string;
   sections: { heading: string; body: string[] }[];
 };
 
@@ -126,6 +127,55 @@ export const projects: Project[] = [
         heading: "Limitations",
         body: [
           "The 67-building sample limits granular geographic stratification across Kathmandu Valley sub-markets. Expanding the dataset and outputting calibrated prediction intervals rather than single-point estimates would improve practical decision utility.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "kathmandu-metropolitan-app",
+    title: "Kathmandu Metropolitan City digital governance platform",
+    year: "2023",
+    kind: "Civic technology",
+    summary:
+      "Municipal civic service mobile ecosystem deployed for Kathmandu Metropolitan City, serving 100,000+ citizens with digital recommendations and grievance dispatch.",
+    lede: "Architected and engineered civic technology mobile applications for Kathmandu Metropolitan City, digitizing municipal recommendations, grievance reporting, and citizen verification workflows.",
+    facts: [
+      { term: "Platform", description: "Flutter (Android & iOS), Node.js, PostgreSQL" },
+      { term: "Scale", description: "100,000+ registered citizens across 32 wards" },
+      { term: "Organization", description: "SmartPalika / CellApp, Kathmandu" },
+      {
+        term: "Key modules",
+        description: "eSifaris (digital recommendations), Hello Mayor (grievances), ward services",
+      },
+      { term: "Deployment", description: "Google Play Store" },
+    ],
+    demo: "https://play.google.com/store/search?q=kathmandu+metropolitan+city&c=apps&hl=en",
+    demoLabel: "View on Google Play",
+    cv: [
+      "Engineered the official citizen services mobile platform for Kathmandu Metropolitan City, scaling to over 100,000 citizens across 32 municipal wards.",
+      "Implemented digital municipal recommendation workflows (eSifaris) and automated grievance routing to local ward officers, reducing turnaround times from days to hours.",
+      "Optimized rendering and payload serialization for low-bandwidth cellular networks and varied Android device specifications.",
+    ],
+    sections: [
+      {
+        heading: "Context & Municipal Scope",
+        body: [
+          "Kathmandu Metropolitan City (KMC) is Nepal's capital and largest municipality, comprising 32 wards and over 800,000 residents. Prior to digitisation, administrative workflows—such as official residency verification, citizenship recommendations, and municipal service requests—required multiple in-person visits to ward offices.",
+          "As part of SmartPalika's digital governance initiative, we architected and deployed the official mobile application ecosystem for Kathmandu Metropolitan City, delivering direct digital access to municipal administration for over 100,000 citizens.",
+        ],
+      },
+      {
+        heading: "Architecture & Implementation",
+        body: [
+          "The application was developed using Flutter with the BLoC pattern for predictable state management across complex multi-step citizen verification workflows. The client connects to microservices managing municipal record lookups, citizen identity, and localized notification dispatch.",
+          "Key modules included 'eSifaris' (digital administrative recommendations and verifications with digital signatures), 'Hello Mayor' (geotagged public grievance reporting with automated SLA-tracked dispatch to ward administrators), and municipal emergency response integration.",
+        ],
+      },
+      {
+        heading: "Engineering Challenges: Scale & Connectivity",
+        body: [
+          "Serving a large, heterogeneous population meant designing for budget Android hardware with limited RAM and intermittent 3G/4G network coverage. We implemented local SQLite caching for offline form drafts, differential image compression before upload, and lazy-loaded widget viewports to eliminate UI thread frame drops during map and ward directory browsing.",
+          "Security and data privacy required encrypting sensitive citizen identification documents in transit and at rest, alongside strict role-based access control (RBAC) ensuring ward representatives could only access records within their jurisdictions.",
         ],
       },
     ],

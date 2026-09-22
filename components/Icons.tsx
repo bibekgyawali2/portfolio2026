@@ -291,4 +291,56 @@ export function MoonIcon(props: IconProps) {
   );
 }
 
+export function CheckIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  );
+}
 
+export function CopyIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+    </svg>
+  );
+}
+
+export function GooglePlayIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      fill="currentColor"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="M3.609 1.814L13.792 12 3.61 22.186a2.38 2.38 0 0 1-.61-1.642V3.456c0-.64.225-1.228.61-1.642zm11.24 11.24l2.585 2.586-12.023 6.942 9.438-9.528zm0-2.108L5.41 1.418l12.024 6.942-2.585 2.586zm1.467 1.054l3.526 2.036c.94.542.94 1.43 0 1.972l-3.526 2.036-2.55-2.55 2.55-2.55z" />
+    </svg>
+  );
+}

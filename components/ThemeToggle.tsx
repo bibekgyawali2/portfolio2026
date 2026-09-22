@@ -25,7 +25,7 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="inline-flex items-center appearance-none bg-transparent border-0 border-b border-rule py-1.5 px-0.5 m-0 font-mono text-[0.8125rem] text-ink-faint cursor-pointer transition-colors duration-140 hover:text-accent hover:border-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3 group print:hidden"
+      className="inline-flex items-center appearance-none bg-transparent border-0 border-b border-rule py-1.5 px-0.5 m-0 font-mono text-[0.8125rem] text-ink-faint cursor-pointer transition-all duration-140 hover:text-accent hover:border-accent active:scale-95 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3 group print:hidden"
       onClick={toggle}
       title="Toggle theme"
     >
