@@ -6,7 +6,7 @@ export function DataList({ items }: { items: Item[] }) {
       {items.map((item, i) => (
         <div
           key={i}
-          className="grid grid-cols-[9rem_1fr] gap-x-7 items-baseline py-1 px-2.5 -mx-2.5 rounded transition-colors duration-120 hover:bg-accent-subtle/40 group max-sm:grid-cols-1 max-sm:gap-y-0.5 max-sm:py-1.5"
+          className="grid grid-cols-[12rem_1fr] gap-x-7 items-baseline py-1 px-2.5 -mx-2.5 rounded transition-colors duration-120 hover:bg-accent-subtle/40 group max-sm:grid-cols-1 max-sm:gap-y-0.5 max-sm:py-1.5"
         >
           <dt className="font-mono text-[0.8125rem] font-medium tracking-[-0.01em] text-ink-faint tabular-nums transition-colors duration-120 group-hover:text-ink">
             {item.term}

@@ -81,21 +81,21 @@ export const experience = {
 
 export const skills = [
   {
-    term: "Instrumentation",
+    term: "Languages",
+    description: "Python, C/C++, Dart, TypeScript, Java",
+  },
+  {
+    term: "Machine Learning & AI",
+    description:
+      "PyTorch, scikit-learn, NumPy, Pandas, Matplotlib, Keras",
+  },
+  {
+    term: "Embedded & Hardware",
     description:
       "Arduino (C/C++), PID control loops, sensor integration over I²C, SPI and analog, real-time data acquisition, signal conditioning",
   },
   {
-    term: "Scientific",
-    description:
-      "Python, NumPy, Pandas, Matplotlib, scikit-learn, PyTorch, Keras",
-  },
-  {
-    term: "Programming",
-    description: "Python, C/C++, Dart, TypeScript, Java",
-  },
-  {
-    term: "Engineering",
+    term: "Frameworks & Cloud",
     description: "Flutter, Node.js, PostgreSQL, Docker, AWS, Git, GitHub Actions",
   },
 ];
