@@ -64,7 +64,7 @@ const engineeringAndMl = projects.filter(
 function provenance(project: (typeof projects)[number]) {
   return [
     project.kind,
-    project.grade && `assessed ${project.grade}`,
+    // project.grade && `assessed ${project.grade}`,
     project.kind === "Undergraduate thesis" &&
     credentials.supervisor &&
     `supervised by ${credentials.supervisor}`,
