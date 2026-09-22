@@ -42,7 +42,7 @@ export const projects: Project[] = [
         description: "MAX30100 (SpO₂, heart rate), MPX5010 (differential pressure), LM35 (temperature)",
       },
       { term: "Interfaces", description: "I²C and analog acquisition" },
-      { term: "Assessed", description: "76/100" },
+      // { term: "Assessed", description: "76/100" },
     ],
     sections: [
       {
