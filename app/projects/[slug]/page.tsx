@@ -8,6 +8,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
 import { site } from "@/content/site";
 import { projectBySlug, projects } from "@/content/projects";
+import { GithubIcon, ExternalLinkIcon } from "@/components/Icons";
 import styles from "./page.module.css";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -64,11 +65,30 @@ export default async function ProjectPage({ params }: Params) {
       <div className={styles.facts}>
         <DataList items={project.facts} />
         {project.repo || project.demo ? (
-          <p className={styles.repo}>
-            {project.repo ? <a href={project.repo}>Source on GitHub →</a> : null}
-            {project.repo && project.demo ? <span className={styles.gap} /> : null}
-            {project.demo ? <a href={project.demo}>Live predictor →</a> : null}
-          </p>
+          <div className={styles.actions}>
+            {project.repo ? (
+              <a
+                href={project.repo}
+                className={styles.actionLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GithubIcon className={styles.actionIcon} />
+                <span>Source on GitHub</span>
+              </a>
+            ) : null}
+            {project.demo ? (
+              <a
+                href={project.demo}
+                className={styles.actionLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLinkIcon className={styles.actionIcon} />
+                <span>Live predictor</span>
+              </a>
+            ) : null}
+          </div>
         ) : null}
       </div>
 

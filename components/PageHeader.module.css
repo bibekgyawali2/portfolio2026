@@ -2,22 +2,25 @@
 
 .title {
   margin: 0;
-  max-width: 28ch;
-  font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.25rem);
-  font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+  max-width: 30ch;
+  font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.375rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 .lede {
-  max-width: 34rem;
+  max-width: 38rem;
   margin: 1.25rem 0 0;
   color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.58;
+  letter-spacing: -0.012em;
 }
 
 .meta {
-  margin-top: 1rem;
+  margin-top: 1.15rem;
   font-family: var(--mono);
   font-size: 0.8125rem;
   color: var(--ink-faint);

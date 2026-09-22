@@ -2,10 +2,17 @@ import type { Metadata } from "next";
 import { DataList } from "@/components/DataList";
 import { Entry } from "@/components/Entry";
 import {
+  AwardIcon,
+  BriefcaseIcon,
+  CpuIcon,
   GithubIcon,
+  GlobeIcon,
+  GraduationCapIcon,
   LinkedinIcon,
   MailIcon,
   MapPinIcon,
+  SlidersIcon,
+  TerminalIcon,
 } from "@/components/Icons";
 import { PageHeader } from "@/components/PageHeader";
 import { Section } from "@/components/Section";
@@ -61,10 +68,10 @@ function provenance(project: (typeof projects)[number]) {
 function renderLinkIcon(label: string) {
   const norm = label.toLowerCase();
   if (norm.includes("github")) {
-    return <GithubIcon className={styles.metaIcon} />;
+    return <GithubIcon className={`${styles.metaIcon} ${styles.githubIcon}`} />;
   }
   if (norm.includes("linkedin")) {
-    return <LinkedinIcon className={styles.metaIcon} />;
+    return <LinkedinIcon className={`${styles.metaIcon} ${styles.linkedinIcon}`} />;
   }
   return null;
 }
@@ -77,14 +84,14 @@ export default function Home() {
         meta={
           <p className={styles.metaLine}>
             <span className={styles.metaItem}>
-              <MapPinIcon className={styles.metaIcon} />
+              <MapPinIcon className={`${styles.metaIcon} ${styles.pinIcon}`} />
               <span>{identity.location}</span>
             </span>
             <span className={styles.metaSep} aria-hidden="true">
               ·
             </span>
             <a href={`mailto:${identity.email}`} className={styles.metaItem}>
-              <MailIcon className={styles.metaIcon} />
+              <MailIcon className={`${styles.metaIcon} ${styles.mailIcon}`} />
               <span>{identity.email}</span>
             </a>
             {identity.links.map((link) => (
@@ -107,7 +114,7 @@ export default function Home() {
         }
       />
 
-      <Section title="Education">
+      <Section title="Education" icon={<GraduationCapIcon />}>
         {education.map((item) => (
           <Entry
             key={item.degree}
@@ -125,7 +132,7 @@ export default function Home() {
         ) : null}
       </Section>
 
-      <Section title="Research">
+      <Section title="Research" icon={<CpuIcon />}>
         {research.map((project) => (
           <Entry
             key={project.slug}
@@ -138,7 +145,11 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Professional experience" lede={experience.preamble}>
+      <Section
+        title="Professional experience"
+        icon={<BriefcaseIcon />}
+        lede={experience.preamble}
+      >
         {experience.roles.map((role) => (
           <Entry
             key={role.institution}
@@ -153,6 +164,7 @@ export default function Home() {
 
       <Section
         title="Self-directed projects"
+        icon={<TerminalIcon />}
         lede="Independent work undertaken to explore the methods."
         more={{ href: "/projects", label: "All projects" }}
       >
@@ -167,15 +179,15 @@ export default function Home() {
         ))}
       </Section>
 
-      <Section title="Technical skills">
+      <Section title="Technical skills" icon={<SlidersIcon />}>
         <DataList items={skills} />
       </Section>
 
-      <Section title="Certifications and awards">
+      <Section title="Certifications and awards" icon={<AwardIcon />}>
         <DataList items={certifications} />
       </Section>
 
-      <Section title="Languages">
+      <Section title="Languages" icon={<GlobeIcon />}>
         <DataList items={languages} />
       </Section>
 

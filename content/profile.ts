@@ -104,7 +104,7 @@ export const awards = [
   {
     term: "2023",
     description:
-      "Award of Excellence, CellApp / SmartPalika — for contributions to civic technology development",
+      "Award of Excellence, CellApp / SmartPalika",
   },
   {
     term: "2023",

@@ -10,23 +10,43 @@
   cursor: pointer;
   border-bottom: 1px solid var(--rule);
   transition: color 140ms ease, border-color 140ms ease;
+  display: inline-flex;
+  align-items: center;
 }
 
 .toggle:hover {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .toggle:focus-visible {
-  outline: 1px solid var(--ink);
+  outline: 1px solid var(--accent);
   outline-offset: 3px;
+}
+
+.whenLight,
+.whenDark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.icon {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  color: var(--accent);
+  transition: transform 200ms ease;
+}
+
+.toggle:hover .icon {
+  transform: rotate(15deg);
 }
 
 /* The label names the theme the button switches to. */
 .whenDark { display: none; }
 
 :global(html[data-theme="dark"]) .whenLight { display: none; }
-:global(html[data-theme="dark"]) .whenDark { display: inline; }
+:global(html[data-theme="dark"]) .whenDark { display: inline-flex; }
 
 .hidden {
   position: absolute;

@@ -4,11 +4,13 @@ import styles from "./Section.module.css";
 
 export function Section({
   title,
+  icon,
   lede,
   more,
   children,
 }: {
   title: string;
+  icon?: ReactNode;
   lede?: string;
   more?: { href: string; label: string };
   children: ReactNode;
@@ -16,7 +18,10 @@ export function Section({
   return (
     <section className={styles.section}>
       <div className={styles.head}>
-        <h2 className={styles.heading}>{title}</h2>
+        <div className={styles.titleWrap}>
+          {icon ? <span className={styles.iconWrap}>{icon}</span> : null}
+          <h2 className={styles.heading}>{title}</h2>
+        </div>
         {more ? (
           <Link href={more.href} className={styles.more}>
             {more.label} →

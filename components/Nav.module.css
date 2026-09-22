@@ -10,7 +10,7 @@
 .home {
   font-size: 0.9375rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   text-decoration: none;
 }
 
@@ -29,17 +29,20 @@
 
 .link {
   color: var(--ink-faint);
+  font-weight: 500;
+  letter-spacing: -0.01em;
   text-decoration: none;
   padding: 0.35rem 0.15rem;
   border-bottom: 1.5px solid transparent;
   transition: color 140ms ease, border-color 140ms ease;
 }
 
-.link:hover { color: var(--ink); }
+.link:hover { color: var(--accent); }
 
 .current {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
 }
 
 @media (max-width: 34rem) {

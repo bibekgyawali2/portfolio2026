@@ -1,5 +1,6 @@
 "use client";
 
+import { SunIcon, MoonIcon } from "./Icons";
 import styles from "./ThemeToggle.module.css";
 
 const STORAGE_KEY = "theme";
@@ -23,10 +24,16 @@ export function ThemeToggle() {
   }
 
   return (
-    <button type="button" className={styles.toggle} onClick={toggle}>
+    <button type="button" className={styles.toggle} onClick={toggle} title="Toggle theme">
       <span className={styles.hidden}>Switch to </span>
-      <span className={styles.whenLight}>dark</span>
-      <span className={styles.whenDark}>light</span>
+      <span className={styles.whenLight}>
+        <MoonIcon className={styles.icon} />
+        <span>dark</span>
+      </span>
+      <span className={styles.whenDark}>
+        <SunIcon className={styles.icon} />
+        <span>light</span>
+      </span>
       <span className={styles.hidden}> theme</span>
     </button>
   );
