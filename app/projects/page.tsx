@@ -6,7 +6,7 @@ import { projects } from "@/content/projects";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Projects by Bibek Gyawali in signal processing, embedded control, instrumentation and applied machine learning.",
+    "Engineering and research projects by Bibek Gyawali in embedded systems, instrumentation, signal processing, and applied machine learning.",
   alternates: { canonical: "/projects" },
 };
 
@@ -14,8 +14,8 @@ export default function Projects() {
   return (
     <>
       <PageHeader
-        title="What I have built"
-        lede="A closed-loop ventilator built for my thesis, an empirical construction cost study, and applied machine learning projects focused on rigorous evaluation design."
+        title="Projects"
+        lede="Selected work in embedded control systems, biomedical instrumentation, applied machine learning, and time-series modeling."
       />
       <ProjectList projects={projects} headingLevel="h2" />
     </>

@@ -4,18 +4,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { nav } from "@/content/profile";
 import { ThemeToggle } from "./ThemeToggle";
-import styles from "./Nav.module.css";
 
 export function Nav({ name }: { name: string }) {
   const pathname = usePathname();
 
   return (
-    <nav className={styles.bar}>
-      <Link href="/" className={styles.home}>
+    <nav className="flex items-baseline justify-between gap-6 pt-9 mb-16 max-sm:pt-6 max-sm:mb-11 print:hidden">
+      <Link
+        href="/"
+        className="text-[0.9375rem] font-semibold tracking-[-0.02em] no-underline transition-colors duration-140 hover:text-accent"
+      >
         {name}
       </Link>
 
-      <ul className={styles.links}>
+      <ul className="flex items-baseline gap-6 max-sm:gap-4 m-0 p-0 list-none font-mono text-[0.8125rem]">
         {nav.map((item) => {
           const current =
             item.href === "/"
@@ -26,7 +28,11 @@ export function Nav({ name }: { name: string }) {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className={`${styles.link} ${current ? styles.current : ""}`}
+                className={`no-underline py-1.5 px-0.5 border-b-[1.5px] transition-colors duration-140 tracking-[-0.01em] ${
+                  current
+                    ? "text-accent border-accent font-semibold"
+                    : "text-ink-faint border-transparent hover:text-accent"
+                }`}
                 aria-current={current ? "page" : undefined}
               >
                 {item.label}

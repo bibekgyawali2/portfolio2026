@@ -53,8 +53,7 @@ export const education = [
 ];
 
 export const experience = {
-  preamble:
-    "Three years of production engineering, concurrent with the degree. It funded my studies and taught me what it costs to keep a system correct once people depend on it.",
+  preamble: "",
   roles: [
     {
       period: "Dec 2025 – present",

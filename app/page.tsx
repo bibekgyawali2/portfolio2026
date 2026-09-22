@@ -5,6 +5,7 @@ import {
   AwardIcon,
   BriefcaseIcon,
   CpuIcon,
+  ExternalLinkIcon,
   GithubIcon,
   GlobeIcon,
   GraduationCapIcon,
@@ -28,7 +29,6 @@ import {
 } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
-import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: site.title,
@@ -68,10 +68,14 @@ function provenance(project: (typeof projects)[number]) {
 function renderLinkIcon(label: string) {
   const norm = label.toLowerCase();
   if (norm.includes("github")) {
-    return <GithubIcon className={`${styles.metaIcon} ${styles.githubIcon}`} />;
+    return (
+      <GithubIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-github opacity-85 shrink-0 transition-all duration-120 group-hover:opacity-100 group-hover:-translate-y-px" />
+    );
   }
   if (norm.includes("linkedin")) {
-    return <LinkedinIcon className={`${styles.metaIcon} ${styles.linkedinIcon}`} />;
+    return (
+      <LinkedinIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-linkedin opacity-85 shrink-0 transition-all duration-120 group-hover:opacity-100 group-hover:-translate-y-px" />
+    );
   }
   return null;
 }
@@ -82,31 +86,35 @@ export default function Home() {
       <PageHeader
         title={identity.name}
         meta={
-          <p className={styles.metaLine}>
-            <span className={styles.metaItem}>
-              <MapPinIcon className={`${styles.metaIcon} ${styles.pinIcon}`} />
+          <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 m-0">
+            <span className="inline-flex items-center gap-1.5 text-inherit no-underline">
+              <MapPinIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-location opacity-85 shrink-0" />
               <span>{identity.location}</span>
             </span>
-            <span className={styles.metaSep} aria-hidden="true">
+            <span className="opacity-45 select-none" aria-hidden="true">
               ·
             </span>
-            <a href={`mailto:${identity.email}`} className={styles.metaItem}>
-              <MailIcon className={`${styles.metaIcon} ${styles.mailIcon}`} />
+            <a
+              href={`mailto:${identity.email}`}
+              className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
+            >
+              <MailIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-email opacity-85 shrink-0 transition-all duration-120 group-hover:opacity-100 group-hover:-translate-y-px" />
               <span>{identity.email}</span>
             </a>
             {identity.links.map((link) => (
-              <span key={link.href} className={styles.metaGroup}>
-                <span className={styles.metaSep} aria-hidden="true">
+              <span key={link.href} className="inline-flex items-center gap-2">
+                <span className="opacity-45 select-none" aria-hidden="true">
                   ·
                 </span>
                 <a
                   href={link.href}
-                  className={styles.metaItem}
+                  className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {renderLinkIcon(link.label)}
                   <span>{link.label}</span>
+                  <ExternalLinkIcon className="w-2.5 h-2.5 text-ink-faint opacity-50 group-hover:opacity-100 group-hover:text-accent transition-all" />
                 </a>
               </span>
             ))}
@@ -126,7 +134,7 @@ export default function Home() {
         ))}
 
         {record.length ? (
-          <div className={styles.block}>
+          <div className="mt-6">
             <DataList items={record} />
           </div>
         ) : null}
@@ -148,7 +156,7 @@ export default function Home() {
       <Section
         title="Professional experience"
         icon={<BriefcaseIcon />}
-        lede={experience.preamble}
+        lede={experience.preamble || undefined}
       >
         {experience.roles.map((role) => (
           <Entry

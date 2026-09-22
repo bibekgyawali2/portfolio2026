@@ -1,7 +1,6 @@
 "use client";
 
 import { SunIcon, MoonIcon } from "./Icons";
-import styles from "./ThemeToggle.module.css";
 
 const STORAGE_KEY = "theme";
 
@@ -24,17 +23,22 @@ export function ThemeToggle() {
   }
 
   return (
-    <button type="button" className={styles.toggle} onClick={toggle} title="Toggle theme">
-      <span className={styles.hidden}>Switch to </span>
-      <span className={styles.whenLight}>
-        <MoonIcon className={styles.icon} />
+    <button
+      type="button"
+      className="inline-flex items-center appearance-none bg-transparent border-0 border-b border-rule py-1.5 px-0.5 m-0 font-mono text-[0.8125rem] text-ink-faint cursor-pointer transition-colors duration-140 hover:text-accent hover:border-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3 group print:hidden"
+      onClick={toggle}
+      title="Toggle theme"
+    >
+      <span className="sr-only">Switch to </span>
+      <span className="inline-flex items-center gap-1.5 dark:hidden">
+        <MoonIcon className="w-3.5 h-3.5 text-accent transition-transform duration-200 group-hover:rotate-15" />
         <span>dark</span>
       </span>
-      <span className={styles.whenDark}>
-        <SunIcon className={styles.icon} />
+      <span className="hidden items-center gap-1.5 dark:inline-flex">
+        <SunIcon className="w-3.5 h-3.5 text-accent transition-transform duration-200 group-hover:rotate-15" />
         <span>light</span>
       </span>
-      <span className={styles.hidden}> theme</span>
+      <span className="sr-only"> theme</span>
     </button>
   );
 }
