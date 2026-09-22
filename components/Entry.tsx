@@ -20,7 +20,7 @@ export function Entry({
   note?: string;
 }) {
   return (
-    <article className="grid grid-cols-[10.5rem_1fr] gap-x-7 mb-9 sm:mb-10 last:mb-0 max-sm:grid-cols-1 max-sm:gap-x-0 print:break-inside-avoid">
+    <article className="grid grid-cols-[10.5rem_1fr] gap-x-7 mb-8 sm:mb-9 last:mb-0 sm:last:mb-0 max-sm:grid-cols-1 max-sm:gap-x-0 print:break-inside-avoid">
       <p className="m-0 pt-1 max-sm:pt-0 max-sm:mb-1.5 font-mono text-[0.8125rem] font-medium text-ink-faint tabular-nums leading-[1.4] tracking-[-0.01em]">
         {when}
       </p>

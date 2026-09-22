@@ -15,7 +15,7 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className="mt-14 sm:mt-18 first-of-type:mt-0 print:mt-7 print:break-inside-avoid">
+    <section className="mt-10 sm:mt-12 first-of-type:mt-0 print:mt-7 print:break-inside-avoid">
       <div
         className={`flex items-center justify-between gap-6 border-t border-rule pt-5 sm:pt-6 ${
           lede ? "mb-3.5 sm:mb-4" : "mb-7 sm:mb-8"
@@ -53,7 +53,7 @@ export function Section({
           {lede}
         </p>
       ) : null}
-      <div className="text-ink-soft">{children}</div>
+      <div className="text-ink-soft [&>*:last-child]:!mb-0">{children}</div>
     </section>
   );
 }

@@ -147,11 +147,11 @@ export default function Home() {
           />
         ))}
 
-        {record.length ? (
+        {record.length > 0 && (
           <div className="mt-6">
             <DataList items={record} />
           </div>
-        ) : null}
+        )}
       </Section>
 
       <Section
