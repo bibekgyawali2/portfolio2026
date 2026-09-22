@@ -33,7 +33,20 @@ import { site } from "@/content/site";
 export const metadata: Metadata = {
   title: site.title,
   description: site.description,
-  alternates: { canonical: "/" },
+  alternates: { canonical: site.url },
+  openGraph: {
+    title: site.title,
+    description: site.description,
+    url: site.url,
+    siteName: site.name,
+    locale: site.locale,
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+  },
 };
 
 /** Credentials that have been filled in. Empty fields are left out entirely. */

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { home, identity } from "@/content/profile";
 
 export const dynamic = "force-static";
-export const alt = `${identity.name} — ${home.display}`;
+export const alt = `${identity.name} | ${home.display}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

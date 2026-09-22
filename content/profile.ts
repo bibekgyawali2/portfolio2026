@@ -135,7 +135,7 @@ export const awards = [
   {
     term: "2023",
     description:
-      "Supervised Machine Learning: Regression and Classification — DeepLearning.AI (Coursera)",
+      "Supervised Machine Learning: Regression and Classification | DeepLearning.AI (Coursera)",
   },
 ];
 

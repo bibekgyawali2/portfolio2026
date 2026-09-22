@@ -6,7 +6,7 @@ import { ProjectBody } from "@/components/ProjectBody";
 import { PageHeader } from "@/components/PageHeader";
 import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
-import { site } from "@/content/site";
+import { createBreadcrumbSchema, createProjectSchema, site } from "@/content/site";
 import { projectBySlug, projects } from "@/content/projects";
 import { GithubIcon, ExternalLinkIcon, GooglePlayIcon, GooglePlayColorIcon, ArrowUpIcon } from "@/components/Icons";
 
@@ -21,15 +21,36 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
   if (!project) return {};
 
+  const pageTitle = `${project.title} | ${identity.name}`;
+  const keywords = [
+    project.title,
+    project.kind,
+    ...project.facts.map((f) => f.description),
+    "Bibek Gyawali",
+    "Electronics Engineer",
+    "Kathmandu",
+  ];
+
   return {
     title: project.title,
     description: project.summary,
-    alternates: { canonical: `/projects/${project.slug}` },
+    keywords,
+    alternates: { canonical: `${site.url}/projects/${project.slug}` },
     openGraph: {
       type: "article",
-      title: project.title,
+      title: pageTitle,
       description: project.summary,
-      url: `/projects/${project.slug}`,
+      url: `${site.url}/projects/${project.slug}`,
+      siteName: site.name,
+      locale: site.locale,
+      publishedTime: `${project.year}-01-01T00:00:00Z`,
+      authors: [site.url],
+      tags: [project.kind, ...project.facts.map((f) => f.description)],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pageTitle,
+      description: project.summary,
     },
   };
 }
@@ -39,35 +60,42 @@ export default async function ProjectPage({ params }: Params) {
 
   if (!project) notFound();
 
+  const projectSchema = createProjectSchema(project);
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", url: "/" },
+    { name: "Projects", url: "/projects" },
+    { name: project.title, url: `/projects/${project.slug}` },
+  ]);
+
+  const pageSchemaGraph = {
+    "@context": "https://schema.org",
+    "@graph": [projectSchema, breadcrumbSchema],
+  };
+
   return (
     <article>
-      <StructuredData
-        data={{
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: project.title,
-          headline: project.title,
-          description: project.summary,
-          url: `${site.url}/projects/${project.slug}`,
-          author: { "@type": "Person", name: identity.name, url: site.url },
-          datePublished: project.year.slice(-4),
-          keywords: project.facts.map((fact) => fact.description).join(", "),
-          ...(project.repo ? { codeRepository: project.repo } : {}),
-        }}
-      />
+      <StructuredData data={pageSchemaGraph} />
       <nav aria-label="Breadcrumb" className="mb-6">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-1.5 font-mono text-[0.75rem] font-medium text-ink-faint no-underline hover:text-accent transition-colors duration-140 group"
-        >
-          <span
-            className="transition-transform duration-140 group-hover:-translate-x-0.5"
-            aria-hidden="true"
-          >
-            ←
-          </span>
-          <span>All projects</span>
-        </Link>
+        <ol className="flex items-center gap-2 font-mono text-[0.75rem] font-medium text-ink-faint list-none p-0 m-0">
+          <li>
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-1.5 no-underline hover:text-accent transition-colors duration-140 group"
+            >
+              <span
+                className="transition-transform duration-140 group-hover:-translate-x-0.5"
+                aria-hidden="true"
+              >
+                ←
+              </span>
+              <span>All projects</span>
+            </Link>
+          </li>
+          <li aria-hidden="true" className="text-rule select-none">/</li>
+          <li aria-current="page" className="text-ink-soft truncate max-w-[200px] sm:max-w-none">
+            {project.title}
+          </li>
+        </ol>
       </nav>
 
       <PageHeader

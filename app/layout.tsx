@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Page } from "@/components/Page";
 import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
-import { personSchema, site } from "@/content/site";
+import { rootSchemaGraph, site } from "@/content/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,25 +19,55 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#100f0e" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: site.title,
-    template: `%s — ${identity.name}`,
+    template: `%s | ${identity.name}`,
   },
   description: site.description,
+  keywords: site.keywords,
   applicationName: identity.name,
   authors: [{ name: identity.name, url: site.url }],
   creator: identity.name,
-  alternates: { canonical: "/" },
+  publisher: identity.name,
+  category: "technology",
+  classification: "Engineering Portfolio & Academic CV",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: { canonical: site.url },
   openGraph: {
     type: "profile",
+    firstName: "Bibek",
+    lastName: "Gyawali",
+    gender: "male",
+    username: "bibekgyawali2",
     siteName: identity.name,
     title: site.title,
     description: site.description,
     url: site.url,
     locale: site.locale,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: site.title }],
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: `${identity.name} | Electronics Engineer, Kathmandu`,
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -51,13 +81,16 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/icon.svg" }],
   },
+  manifest: "/manifest.webmanifest",
 };
 
 // Applies stored theme or defaults to device preference before first paint.
@@ -80,7 +113,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: restoreTheme }}
         />
-        <StructuredData data={personSchema} />
+        <StructuredData data={rootSchemaGraph} />
         <Page>{children}</Page>
       </body>
     </html>

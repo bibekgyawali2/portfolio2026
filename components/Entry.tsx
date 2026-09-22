@@ -33,7 +33,7 @@ export function Entry({
             <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-140 hover:scale-105">
               <Image
                 src={logo}
-                alt=""
+                alt={where ? `${where} logo` : `${title} logo`}
                 width={32}
                 height={32}
                 className="w-7 h-7 object-contain"
