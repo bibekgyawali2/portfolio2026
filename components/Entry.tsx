@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ExternalLinkIcon } from "./Icons";
 import { emphasize } from "./emphasize";
 
 export function Entry({
@@ -7,6 +8,7 @@ export function Entry({
   title,
   href,
   where,
+  whereHref,
   logo,
   body,
   note,
@@ -15,6 +17,7 @@ export function Entry({
   title: string;
   href?: string;
   where?: string;
+  whereHref?: string;
   logo?: string;
   body?: string[];
   note?: string;
@@ -52,7 +55,19 @@ export function Entry({
             </h3>
             {where ? (
               <p className="mt-1 mb-0 text-ink-soft text-[0.875rem] leading-[1.45] tracking-[-0.005em]">
-                {where}
+                {whereHref ? (
+                  <a
+                    href={whereHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-inherit no-underline border-b border-rule hover:border-accent hover:text-accent transition-colors duration-140 inline-flex items-center gap-1 group/where"
+                  >
+                    <span>{where}</span>
+                    <ExternalLinkIcon className="w-2.5 h-2.5 opacity-40 group-hover/where:opacity-100 group-hover/where:text-accent transition-all" />
+                  </a>
+                ) : (
+                  where
+                )}
               </p>
             ) : null}
           </div>

@@ -181,6 +181,7 @@ export default function Home() {
             when={role.period}
             title={role.role}
             where={role.institution}
+            whereHref={role.institutionHref}
             logo={role.logo}
             body={role.body}
             note={role.note || undefined}

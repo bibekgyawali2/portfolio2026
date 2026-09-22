@@ -58,6 +58,7 @@ export const experience = {
       period: "Dec 2025 – present",
       role: "Software Engineer",
       institution: "Kingsoft, Kathmandu",
+      institutionHref: "https://www.linkedin.com/company/kingsoft-tech/",
       logo: "/logos/kingsoft.png",
       body: [
         "Architected a Flutter codebase on the BLoC pattern and built the CI/CD and automated test pipeline in GitHub Actions across iOS and Android.",
@@ -69,6 +70,7 @@ export const experience = {
       period: "Nov 2022 – Mar 2024",
       role: "Mobile Application Developer",
       institution: "CellApp / SmartPalika, Kathmandu",
+      institutionHref: "https://www.linkedin.com/company/smartpalika/",
       logo: "/logos/cellapp.png",
       body: [
         "Built civic technology for 15+ municipal governments, including the digital governance application for Kathmandu Metropolitan City, serving over 100,000 citizens.",
