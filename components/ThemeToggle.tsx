@@ -17,7 +17,8 @@ export function ThemeToggle() {
     setMounted(true);
     const rootTheme = document.documentElement.dataset.theme as
       | "light"
-      | "dark";
+      | "dark"
+      | undefined;
     if (rootTheme === "dark" || rootTheme === "light") {
       setTheme(rootTheme);
     } else {
@@ -27,8 +28,28 @@ export function ThemeToggle() {
         | null;
       if (stored) {
         setTheme(stored);
+      } else {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        const defaultTheme = prefersDark ? "dark" : "light";
+        setTheme(defaultTheme);
+        document.documentElement.dataset.theme = defaultTheme;
       }
     }
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (!stored) {
+        const next = e.matches ? "dark" : "light";
+        document.documentElement.dataset.theme = next;
+        setTheme(next);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   function toggle() {

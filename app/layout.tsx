@@ -60,8 +60,8 @@ export const metadata: Metadata = {
   },
 };
 
-// Applies a stored theme before first paint. Light unless dark was chosen.
-const restoreTheme = `try{document.documentElement.dataset.theme=localStorage.getItem("theme")==="dark"?"dark":"light"}catch(e){}`;
+// Applies stored theme or defaults to device preference before first paint.
+const restoreTheme = `try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=t?t:(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){}`;
 
 export default function RootLayout({
   children,
@@ -72,7 +72,6 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable}`}
-      data-theme="light"
       suppressHydrationWarning
     >
       <body>

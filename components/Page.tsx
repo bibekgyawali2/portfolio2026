@@ -12,7 +12,7 @@ export function Page({ children }: { children: ReactNode }) {
       >
         Skip to content
       </a>
-      <Nav name={identity.name} />
+      <Nav name="HOME" />
       <main id="main-content" className="flex-1">
         {children}
       </main>
