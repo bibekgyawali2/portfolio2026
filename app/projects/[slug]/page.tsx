@@ -8,7 +8,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
 import { site } from "@/content/site";
 import { projectBySlug, projects } from "@/content/projects";
-import { GithubIcon, ExternalLinkIcon, GooglePlayIcon } from "@/components/Icons";
+import { GithubIcon, ExternalLinkIcon, GooglePlayIcon, GooglePlayColorIcon, ArrowUpIcon } from "@/components/Icons";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -38,11 +38,6 @@ export default async function ProjectPage({ params }: Params) {
   const project = projectBySlug((await params).slug);
 
   if (!project) notFound();
-
-  const currentIndex = projects.findIndex((p) => p.slug === project.slug);
-  const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-  const nextProject =
-    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
   return (
     <article>
@@ -99,12 +94,16 @@ export default async function ProjectPage({ params }: Params) {
             {project.demo ? (
               <a
                 href={project.demo}
-                className="inline-flex items-center gap-2 font-mono text-[0.8125rem] font-medium text-accent bg-accent-subtle border border-accent-border py-1.5 px-3.5 rounded-full no-underline transition-all duration-140 hover:bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] hover:border-accent hover:-translate-y-px active:translate-y-0"
+                className={
+                  project.demo.includes("play.google.com")
+                    ? "inline-flex items-center gap-2.5 font-mono text-[0.8125rem] font-semibold text-emerald-800 dark:text-emerald-300 bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-cyan-500/15 hover:from-emerald-500/25 hover:via-teal-500/25 hover:to-cyan-500/25 border border-emerald-500/40 dark:border-emerald-400/40 py-1.5 px-4 rounded-full no-underline transition-all duration-140 hover:border-emerald-500 hover:shadow-xs hover:-translate-y-px active:translate-y-0 shadow-2xs group/btn"
+                    : "inline-flex items-center gap-2 font-mono text-[0.8125rem] font-medium text-accent bg-accent-subtle border border-accent-border py-1.5 px-3.5 rounded-full no-underline transition-all duration-140 hover:bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] hover:border-accent hover:-translate-y-px active:translate-y-0"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {project.demo.includes("play.google.com") ? (
-                  <GooglePlayIcon className="w-3.5 h-3.5 shrink-0" />
+                  <GooglePlayColorIcon className="w-4 h-4 shrink-0 transition-transform duration-140 group-hover/btn:scale-110" />
                 ) : (
                   <ExternalLinkIcon className="w-3.5 h-3.5 shrink-0" />
                 )}
@@ -120,80 +119,36 @@ export default async function ProjectPage({ params }: Params) {
         ) : null}
       </div>
 
-      <ProjectBody sections={project.sections} />
+      {project.sections.length ? (
+        <ProjectBody sections={project.sections} />
+      ) : null}
 
       <nav
-        aria-label="Project pagination"
-        className="mt-18 pt-8 border-t border-rule print:hidden"
+        aria-label="Project navigation"
+        className="mt-16 sm:mt-20 pt-6 sm:pt-7 border-t border-rule flex justify-between items-center font-mono text-[0.8125rem] print:hidden"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {prevProject ? (
-            <Link
-              href={`/projects/${prevProject.slug}`}
-              className="group flex flex-col p-4 rounded-md border border-rule transition-all duration-140 hover:border-accent/40 hover:bg-accent-subtle/50 active:scale-[0.995] no-underline"
-            >
-              <span className="font-mono text-[0.6875rem] font-medium text-ink-faint uppercase tracking-[0.06em] mb-1.5 flex items-center gap-1.5 transition-colors group-hover:text-accent">
-                <span
-                  aria-hidden="true"
-                  className="transition-transform duration-140 group-hover:-translate-x-1"
-                >
-                  ←
-                </span>
-                <span>Previous project</span>
-              </span>
-              <span className="text-[0.9375rem] font-semibold tracking-[-0.015em] leading-[1.35] text-ink transition-colors group-hover:text-accent">
-                {prevProject.title}
-              </span>
-            </Link>
-          ) : (
-            <div className="hidden sm:block" />
-          )}
-
-          {nextProject ? (
-            <Link
-              href={`/projects/${nextProject.slug}`}
-              className="group flex flex-col items-start sm:items-end p-4 rounded-md border border-rule transition-all duration-140 hover:border-accent/40 hover:bg-accent-subtle/50 active:scale-[0.995] no-underline text-left sm:text-right"
-            >
-              <span className="font-mono text-[0.6875rem] font-medium text-ink-faint uppercase tracking-[0.06em] mb-1.5 flex items-center gap-1.5 transition-colors group-hover:text-accent">
-                <span>Next project</span>
-                <span
-                  aria-hidden="true"
-                  className="transition-transform duration-140 group-hover:translate-x-1"
-                >
-                  →
-                </span>
-              </span>
-              <span className="text-[0.9375rem] font-semibold tracking-[-0.015em] leading-[1.35] text-ink transition-colors group-hover:text-accent">
-                {nextProject.title}
-              </span>
-            </Link>
-          ) : (
-            <div className="hidden sm:block" />
-          )}
-        </div>
-
-        <div className="mt-6 pt-4 flex justify-between items-center font-mono text-[0.8125rem]">
-          <Link
-            href="/projects"
-            className="inline-flex items-center gap-1.5 text-ink-soft no-underline transition-colors duration-140 hover:text-accent group"
+        <Link
+          href="/projects"
+          className="inline-flex items-center gap-1.5 text-ink-soft no-underline transition-colors duration-140 hover:text-accent group"
+        >
+          <span
+            className="transition-transform duration-140 group-hover:-translate-x-0.5"
+            aria-hidden="true"
           >
-            <span
-              className="transition-transform duration-140 group-hover:-translate-x-0.5"
-              aria-hidden="true"
-            >
-              ←
-            </span>
-            <span className="group-hover:underline group-hover:underline-offset-[0.2em]">
-              All projects
-            </span>
-          </Link>
-          <a
-            href="#main-content"
-            className="text-ink-faint no-underline hover:text-accent transition-colors duration-140 hover:underline hover:underline-offset-[0.2em]"
-          >
-            Top ↑
-          </a>
-        </div>
+            ←
+          </span>
+          <span className="group-hover:underline group-hover:underline-offset-[0.2em]">
+            All projects
+          </span>
+        </Link>
+        <a
+          href="#main-content"
+          className="inline-flex items-center gap-1 text-ink-faint no-underline pb-0.5 border-b border-transparent transition-colors duration-140 hover:text-accent hover:border-accent group"
+          aria-label="Back to top"
+        >
+          <span>Top</span>
+          <ArrowUpIcon className="w-3 h-3 text-icon-top shrink-0 transition-transform duration-120 group-hover:-translate-y-0.5 group-hover:text-accent" />
+        </a>
       </nav>
     </article>
   );

@@ -22,6 +22,26 @@ export function MapPinIcon(props: IconProps) {
   );
 }
 
+export function ArrowUpIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="m5 12 7-7 7 7" />
+      <path d="M12 19V5" />
+    </svg>
+  );
+}
+
 export function MailIcon(props: IconProps) {
   return (
     <svg
@@ -341,6 +361,35 @@ export function GooglePlayIcon(props: IconProps) {
       {...props}
     >
       <path d="M3.609 1.814L13.792 12 3.61 22.186a2.38 2.38 0 0 1-.61-1.642V3.456c0-.64.225-1.228.61-1.642zm11.24 11.24l2.585 2.586-12.023 6.942 9.438-9.528zm0-2.108L5.41 1.418l12.024 6.942-2.585 2.586zm1.467 1.054l3.526 2.036c.94.542.94 1.43 0 1.972l-3.526 2.036-2.55-2.55 2.55-2.55z" />
+    </svg>
+  );
+}
+
+export function GooglePlayColorIcon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 512 512"
+      width="15"
+      height="15"
+      aria-hidden="true"
+      {...props}
+    >
+      <path
+        fill="#00E676"
+        d="M272.5 256.4L58.7 469.7c7.4 8.7 18.5 14.3 31 14.3 7.8 0 15-2.2 21.2-6.1l247.9-142.9-86.3-78.6z"
+      />
+      <path
+        fill="#FF334B"
+        d="M358.8 335l86.2-49.8c14.6-8.4 23.5-23.7 23.5-40.2s-8.9-31.8-23.5-40.2L358.8 155l-86.3 86.4 86.3 93.6z"
+      />
+      <path
+        fill="#00A0FF"
+        d="M58.7 42.3C52.2 49.9 48 59.9 48 71.1v369.8c0 11.2 4.2 21.2 10.7 28.8L272.5 256 58.7 42.3z"
+      />
+      <path
+        fill="#FFD200"
+        d="M272.5 255.6l86.3-78.6L110.9 34.1c-6.2-3.9-13.4-6.1-21.2-6.1-12.5 0-23.6 5.6-31 14.3l213.8 213.3z"
+      />
     </svg>
   );
 }

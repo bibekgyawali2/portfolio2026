@@ -29,7 +29,6 @@ export const credentials = {
 };
 
 export const nav = [
-  { label: "CV", href: "/" },
   { label: "Projects", href: "/projects" },
 ];
 
@@ -59,6 +58,7 @@ export const experience = {
       period: "Dec 2025 – present",
       role: "Software Engineer",
       institution: "Kingsoft, Kathmandu",
+      logo: "/logos/kingsoft.png",
       body: [
         "Architected a Flutter codebase on the BLoC pattern and built the CI/CD and automated test pipeline in GitHub Actions across iOS and Android.",
         "Profiled and removed performance bottlenecks — widget tree, memory, lazy loading — for low-end Android hardware, which is most of the installed base here.",
@@ -69,6 +69,7 @@ export const experience = {
       period: "Nov 2022 – Mar 2024",
       role: "Mobile Application Developer",
       institution: "CellApp / SmartPalika, Kathmandu",
+      logo: "/logos/cellapp.png",
       body: [
         "Built civic technology for 15+ municipal governments, including the digital governance application for Kathmandu Metropolitan City, serving over 100,000 citizens.",
         "Developed a retail SaaS platform with real-time inventory and billing, deployed to 1,000+ businesses, and presented the systems to government officials to drive adoption.",
@@ -113,7 +114,7 @@ export const certifications: Certification[] = [
     issuer: "DeepLearning.AI",
     year: "2023",
     logo: "/logos/deeplearning-ai.png",
-    href: "https://www.coursera.org/learn/machine-learning",
+    href: "https://www.coursera.org/account/accomplishments/verify/ENQCHQ9R2U39",
   },
   {
     title: "Award of Excellence",

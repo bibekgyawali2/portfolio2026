@@ -98,29 +98,7 @@ export const projects: Project[] = [
       "Implemented digital municipal recommendation workflows (eSifaris) and automated grievance routing to local ward officers, reducing turnaround times from days to hours.",
       "Optimized rendering and payload serialization for low-bandwidth cellular networks and varied Android device specifications.",
     ],
-    sections: [
-      {
-        heading: "Context & Municipal Scope",
-        body: [
-          "Kathmandu Metropolitan City (KMC) is Nepal's capital and largest municipality, comprising 32 wards and over 800,000 residents. Prior to digitisation, administrative workflows—such as official residency verification, citizenship recommendations, and municipal service requests—required multiple in-person visits to ward offices.",
-          "As part of SmartPalika's digital governance initiative, we architected and deployed the official mobile application ecosystem for Kathmandu Metropolitan City, delivering direct digital access to municipal administration for over 100,000 citizens.",
-        ],
-      },
-      {
-        heading: "Architecture & Implementation",
-        body: [
-          "The application was developed using Flutter with the BLoC pattern for predictable state management across complex multi-step citizen verification workflows. The client connects to microservices managing municipal record lookups, citizen identity, and localized notification dispatch.",
-          "Key modules included 'eSifaris' (digital administrative recommendations and verifications with digital signatures), 'Hello Mayor' (geotagged public grievance reporting with automated SLA-tracked dispatch to ward administrators), and municipal emergency response integration.",
-        ],
-      },
-      {
-        heading: "Engineering Challenges: Scale & Connectivity",
-        body: [
-          "Serving a large, heterogeneous population meant designing for budget Android hardware with limited RAM and intermittent 3G/4G network coverage. We implemented local SQLite caching for offline form drafts, differential image compression before upload, and lazy-loaded widget viewports to eliminate UI thread frame drops during map and ward directory browsing.",
-          "Security and data privacy required encrypting sensitive citizen identification documents in transit and at rest, alongside strict role-based access control (RBAC) ensuring ward representatives could only access records within their jurisdictions.",
-        ],
-      },
-    ],
+    sections: [],
   },
   {
     slug: "nepse-forecasting",

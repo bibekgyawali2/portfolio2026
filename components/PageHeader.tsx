@@ -11,17 +11,17 @@ export function PageHeader({
   meta?: ReactNode;
 }) {
   return (
-    <header className="mb-14 max-sm:mb-10 print:mb-8">
-      <h1 className="m-0 max-w-[30ch] text-[clamp(1.75rem,1.35rem+1.8vw,2.375rem)] font-semibold leading-[1.18] tracking-[-0.03em] text-balance">
+    <header className="mb-6 sm:mb-7 print:mb-6">
+      <h1 className="m-0 max-w-[28ch] text-[clamp(1.875rem,1.45rem+1.9vw,2.5rem)] font-semibold leading-[1.15] tracking-[-0.035em] text-ink text-balance">
         {title}
       </h1>
       {meta ? (
-        <div className="mt-4 font-mono text-[0.8125rem] text-ink-faint [&>p]:m-0">
+        <div className="mt-3.5 font-mono text-[0.8125rem] text-ink-faint [&>p]:m-0 tracking-[-0.005em]">
           {meta}
         </div>
       ) : null}
       {lede ? (
-        <p className="max-w-[38rem] mt-5 text-ink-soft text-[1.0625rem] leading-[1.58] tracking-[-0.012em]">
+        <p className="max-w-[42rem] mt-4 text-ink-soft text-[1.0625rem] leading-[1.6] tracking-[-0.012em]">
           {lede}
         </p>
       ) : null}

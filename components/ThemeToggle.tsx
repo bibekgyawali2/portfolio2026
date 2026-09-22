@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { SunIcon, MoonIcon } from "./Icons";
 
 const STORAGE_KEY = "theme";
@@ -9,11 +10,33 @@ const STORAGE_KEY = "theme";
  * inline script in the layout, before first paint.
  */
 export function ThemeToggle() {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const rootTheme = document.documentElement.dataset.theme as
+      | "light"
+      | "dark";
+    if (rootTheme === "dark" || rootTheme === "light") {
+      setTheme(rootTheme);
+    } else {
+      const stored = localStorage.getItem(STORAGE_KEY) as
+        | "light"
+        | "dark"
+        | null;
+      if (stored) {
+        setTheme(stored);
+      }
+    }
+  }, []);
+
   function toggle() {
     const root = document.documentElement;
-    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    const next = theme === "dark" ? "light" : "dark";
 
     root.dataset.theme = next;
+    setTheme(next);
 
     try {
       localStorage.setItem(STORAGE_KEY, next);
@@ -25,20 +48,29 @@ export function ThemeToggle() {
   return (
     <button
       type="button"
-      className="inline-flex items-center appearance-none bg-transparent border-0 border-b border-rule py-1.5 px-0.5 m-0 font-mono text-[0.8125rem] text-ink-faint cursor-pointer transition-all duration-140 hover:text-accent hover:border-accent active:scale-95 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-3 group print:hidden"
       onClick={toggle}
-      title="Toggle theme"
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+      className="inline-flex items-center p-0.5 rounded-full border border-rule/80 bg-accent-subtle/50 hover:border-accent/50 transition-all duration-140 cursor-pointer print:hidden shadow-2xs group"
     >
-      <span className="sr-only">Switch to </span>
-      <span className="inline-flex items-center gap-1.5 dark:hidden">
-        <MoonIcon className="w-3.5 h-3.5 text-accent transition-transform duration-200 group-hover:rotate-15" />
-        <span>dark</span>
+      <span
+        className={`flex items-center justify-center w-5 h-5 rounded-full transition-all duration-140 ${
+          mounted && theme === "light"
+            ? "bg-white text-amber-500 shadow-2xs scale-100"
+            : "text-ink-faint hover:text-ink opacity-60 hover:opacity-100 scale-90"
+        }`}
+      >
+        <SunIcon className="w-3 h-3" />
       </span>
-      <span className="hidden items-center gap-1.5 dark:inline-flex">
-        <SunIcon className="w-3.5 h-3.5 text-accent transition-transform duration-200 group-hover:rotate-15" />
-        <span>light</span>
+      <span
+        className={`flex items-center justify-center w-5 h-5 rounded-full transition-all duration-140 ${
+          mounted && theme === "dark"
+            ? "bg-[#1e293b] text-sky-400 shadow-2xs scale-100"
+            : "text-ink-faint hover:text-ink opacity-60 hover:opacity-100 scale-90"
+        }`}
+      >
+        <MoonIcon className="w-3 h-3" />
       </span>
-      <span className="sr-only"> theme</span>
     </button>
   );
 }

@@ -11,7 +11,7 @@ export function DataList({ items }: { items: Item[] }) {
           <dt className="font-mono text-[0.8125rem] font-medium tracking-[-0.01em] text-ink-faint tabular-nums transition-colors duration-120 group-hover:text-ink">
             {item.term}
           </dt>
-          <dd className="m-0 text-ink-soft text-[0.9375rem] leading-[1.55] tracking-[-0.008em] text-pretty transition-colors duration-120 group-hover:text-ink">
+          <dd className="m-0 text-ink-soft text-[0.9375rem] leading-[1.6] tracking-[-0.008em] text-pretty transition-colors duration-120 group-hover:text-ink">
             {item.description}
           </dd>
         </div>
