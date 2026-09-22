@@ -2,11 +2,11 @@ export type Item = { term: string; description: string };
 
 export function DataList({ items }: { items: Item[] }) {
   return (
-    <dl className="m-0 space-y-1.5">
+    <dl className="m-0 space-y-2 sm:space-y-2.5">
       {items.map((item, i) => (
         <div
           key={i}
-          className="grid grid-cols-[10.5rem_1fr] gap-x-7 items-baseline py-1 transition-colors duration-120 group max-sm:grid-cols-1 max-sm:gap-y-0.5 max-sm:py-1.5"
+          className="grid grid-cols-[10.5rem_1fr] gap-x-10 sm:gap-x-11 items-baseline py-1 transition-colors duration-120 group max-sm:grid-cols-1 max-sm:gap-y-1 max-sm:py-1.5"
         >
           <dt className="font-mono text-[0.8125rem] font-medium tracking-[-0.01em] text-ink-faint tabular-nums whitespace-nowrap transition-colors duration-120 group-hover:text-ink">
             {item.term}
