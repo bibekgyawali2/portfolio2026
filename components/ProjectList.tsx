@@ -16,7 +16,7 @@ export function ProjectList({
     <ul className={styles.list}>
       {projects.map((project) => (
         <li key={project.slug} className={styles.item}>
-          <Link href={`/work/${project.slug}`} className={styles.link}>
+          <Link href={`/projects/${project.slug}`} className={styles.link}>
             <span className={styles.year}>{project.year}</span>
             <span>
               <Heading className={styles.title}>{project.title}</Heading>

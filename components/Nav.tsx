@@ -17,7 +17,10 @@ export function Nav({ name }: { name: string }) {
 
       <ul className={styles.links}>
         {nav.map((item) => {
-          const current = pathname.startsWith(item.href);
+          const current =
+            item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href);
 
           return (
             <li key={item.href}>

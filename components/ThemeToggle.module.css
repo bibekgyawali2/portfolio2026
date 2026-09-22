@@ -2,19 +2,19 @@
   appearance: none;
   background: none;
   border: 0;
-  padding: 0.15rem 0;
+  padding: 0.35rem 0.15rem;
   margin: 0;
   font-family: var(--mono);
   font-size: 0.8125rem;
   color: var(--ink-faint);
   cursor: pointer;
   border-bottom: 1px solid var(--rule);
-  transition: color 120ms linear, border-color 120ms linear;
+  transition: color 140ms ease, border-color 140ms ease;
 }
 
 .toggle:hover {
   color: var(--ink);
-  border-bottom-color: currentColor;
+  border-bottom-color: var(--ink);
 }
 
 .toggle:focus-visible {

@@ -5,12 +5,12 @@ export default function NotFound() {
   return (
     <>
       <PageHeader
-        kicker="404"
-        title="There is nothing at this address."
-        lede="The page may have been renamed, or the link may be wrong."
+        title="Page not found"
+        meta="404"
+        lede="The page may have been moved, renamed, or the link may be incorrect."
       />
       <p>
-        <Link href="/">Back to the front page</Link>
+        <Link href="/">Return to the front page →</Link>
       </p>
     </>
   );

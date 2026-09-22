@@ -20,6 +20,19 @@
   list-style: none;
 }
 
+.links a {
+  color: var(--ink-faint);
+  text-decoration: none;
+  padding-bottom: 0.1rem;
+  border-bottom: 1px solid transparent;
+  transition: color 140ms ease, border-color 140ms ease;
+}
+
+.links a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
 @media print {
   .footer { display: none; }
 }

@@ -7,10 +7,10 @@ Four pages, no client-side JavaScript beyond the nav and theme toggle.
 
 | Route | What it is |
 | --- | --- |
-| `/` | Opening statement, selected work, current status |
-| `/work` | Project index |
-| `/work/[slug]` | A project written up properly — problem, method, what it taught |
-| `/cv` | The document version. Print it for a PDF. |
+| `/` | Curriculum vitae / Home page |
+| `/projects` | Project index (What I have built) |
+| `/projects/[slug]` | Individual project write-ups and documentation |
+| `/cv` | Canonical alias to home CV |
 
 ## Editing
 
@@ -30,17 +30,18 @@ Content is data, kept apart from presentation:
 | `Page` | Shell: nav, main, footer |
 | `Nav` | Site nav with current-page state, plus the theme toggle |
 | `Lede` | Home display line, intro, "now" |
-| `PageHeader` | Kicker, title and lede on interior pages |
+| `PageHeader` | Title, metadata and lede on interior pages |
 | `ProjectList` | The work index rows |
 | `ProjectBody` | Prose sections of a project page |
 | `Section` | Titled section with optional lede and trailing link |
 | `Entry` | Date column + title, affiliation, bullets |
 | `DataList` | Two-column term/description list |
+| `Icons` | Minimalist SVG vector icons for contact links |
 | `ThemeToggle` | Light/dark switch; light is the default |
 
 ## Design
 
-One column, hairline rules, system font stack. No icons, images or web fonts.
+One column, hairline rules, system font stack, subtle vector icons.
 Light by default regardless of OS setting; the choice persists in
 `localStorage` and is re-applied before first paint. Nav and footer are hidden
 when printing so `/cv` prints clean, with URLs expanded.

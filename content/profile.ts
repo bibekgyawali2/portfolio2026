@@ -1,5 +1,5 @@
 /**
- * All page content. Edit here; the pages compose themselves from this file.
+ * Portfolio profile content and identity.
  */
 
 export const identity = {
@@ -17,89 +17,38 @@ export const identity = {
   ],
 };
 
-/**
- * ─────────────────────────────────────────────────────────────────────
- * FILL THESE IN. An admissions committee looks for every one of them,
- * and their absence is read as a weak answer rather than a missing one.
- * Any field left empty simply will not render.
- * ─────────────────────────────────────────────────────────────────────
- */
 export const credentials = {
-  /** e.g. "78.4% (First Division)" or "3.42 / 4.0". The single most-screened number. */
   gpa: "",
-  /** Foreign committees do not know Tribhuvan's scale. Tell them. */
   gradingScale: "",
-  /** Add the four band scores — committees check sub-scores, not just the overall. */
   englishTest: "IELTS 7.0 overall",
   englishTestDate: "2026",
-  /** Optional; only list if the score helps you. */
   gre: "",
   greDate: "",
-  /** Thesis supervisor, with title and department. Names research provenance. */
   supervisor: "",
-  /** Link to the thesis PDF. Hosting it costs nothing and proves the work exists. */
   thesisUrl: "",
 };
 
 export const nav = [
-  { label: "Work", href: "/work" },
-  { label: "CV", href: "/cv" },
+  { label: "CV", href: "/" },
+  { label: "Projects", href: "/projects" },
 ];
 
 export const home = {
-  /** The opening line. Set in display type; keep it to one idea. */
   display:
     "Computer science and 5G wireless communication, from signal processing up.",
   intro: [
     "I am an electronics engineer in Kathmandu. My thesis was a ventilator: a closed-loop device built from parts a hospital workshop could source, with a PID controller holding airway pressure against lungs that do not behave linearly.",
-    "Alongside the degree I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, a retail platform running in 1,000 shops. Useful work, and it paid for the degree, but the ventilator is the problem I want to keep.",
+    "Alongside the degree I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, and a retail platform running in 1,000 shops. Useful work that funded my studies, but real-time systems and biomedical instrumentation are the problems I want to pursue.",
   ],
   now: "Applying for master's study in these areas.",
 };
 
-export const interests = [
-  {
-    label: "Control",
-    title: "Embedded control and real-time systems",
-  },
-  {
-    label: "Biomedical",
-    title: "Biomedical instrumentation",
-  },
-  {
-    label: "Signals",
-    title: "Signal processing and applied machine learning",
-  },
-];
-
 export const education = [
   {
-    period: "2017–2025",
+    period: "2018–2023",
     degree: "B.E. Electronics and Communication Engineering",
     institution: "Tribhuvan University, Kathmandu",
-    /**
-     * Eight years on a four-year degree is the first thing a reader will
-     * question. Answer it before they ask. Edit this to the true account.
-     */
-    note: "Programme duration reflects Tribhuvan University's delayed academic calendar over this period, alongside full-time engineering work from 2022.",
-  },
-];
-
-export const coursework = [
-  {
-    term: "Mathematics",
-    description:
-      "Engineering Mathematics I–IV (calculus, linear algebra, differential equations, complex variables and transforms), probability and statistics, numerical methods",
-  },
-  {
-    term: "Signals",
-    description:
-      "Digital signal processing, control systems, communication systems, electromagnetics, radar technology",
-  },
-  {
-    term: "Hardware",
-    description:
-      "Microprocessors and embedded systems, instrumentation, digital and analog electronics",
+    note: "",
   },
 ];
 
@@ -115,7 +64,6 @@ export const experience = {
         "Architected a Flutter codebase on the BLoC pattern and built the CI/CD and automated test pipeline in GitHub Actions across iOS and Android.",
         "Profiled and removed performance bottlenecks — widget tree, memory, lazy loading — for low-end Android hardware, which is most of the installed base here.",
       ],
-      /** A reader will notice the gap before this role. Account for it. */
       note: "",
     },
     {
@@ -161,7 +109,7 @@ export const awards = [
   {
     term: "2023",
     description:
-      "Supervised Machine Learning: Regression and Classification — DeepLearning.AI (Coursera), Andrew Ng",
+      "Supervised Machine Learning: Regression and Classification — DeepLearning.AI (Coursera)",
   },
 ];
 
@@ -174,5 +122,4 @@ export const languages = [
   },
 ];
 
-/** Committees expect names. Add your supervisor and one professional referee. */
 export const referees: { term: string; description: string }[] = [];

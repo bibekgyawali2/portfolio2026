@@ -7,8 +7,13 @@ import styles from "./Page.module.css";
 export function Page({ children }: { children: ReactNode }) {
   return (
     <div className={styles.shell}>
+      <a href="#main-content" className={styles.skipLink}>
+        Skip to content
+      </a>
       <Nav name={identity.name} />
-      <main className={styles.main}>{children}</main>
+      <main id="main-content" className={styles.main}>
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );

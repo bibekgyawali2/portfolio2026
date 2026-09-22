@@ -25,7 +25,6 @@ export const projects: Project[] = [
     year: "2025",
     kind: "Undergraduate thesis",
     grade: "76/100",
-    /** Add the repository link here once the code is public. */
     repo: "",
     cv: [
       "Designed and prototyped a fully functional closed-loop ventilator, implementing PID control in embedded C on Arduino to regulate tidal volume and airway pressure against the non-linear dynamics of a bag-valve pneumatic system.",
@@ -101,11 +100,6 @@ export const projects: Project[] = [
       "Reported the negative result — that the additional capacity of the neural network is unjustified at this sample size — supported by residual, Q–Q, error-distribution and feature-importance diagnostics.",
     ],
     repo: "https://github.com/bibekgyawali2/ANN-based-Prediction-of-Final-Construction-Cost-of-Residential-Buildings-in-Kathmandu-Valley-at-an-E",
-    /**
-     * The Streamlit deployment currently sits behind a login wall. Set it to
-     * public in the app's settings, then restore the link here:
-     * "https://bibekgyawali2-streamlit-test-web-u66b8i.streamlit.app/"
-     */
     demo: "",
     sections: [
       {

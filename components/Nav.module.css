@@ -30,16 +30,16 @@
 .link {
   color: var(--ink-faint);
   text-decoration: none;
-  padding-bottom: 0.15rem;
-  border-bottom: 1px solid transparent;
-  transition: color 120ms linear, border-color 120ms linear;
+  padding: 0.35rem 0.15rem;
+  border-bottom: 1.5px solid transparent;
+  transition: color 140ms ease, border-color 140ms ease;
 }
 
 .link:hover { color: var(--ink); }
 
 .current {
   color: var(--ink);
-  border-bottom-color: var(--rule);
+  border-bottom-color: var(--ink);
 }
 
 @media (max-width: 34rem) {
