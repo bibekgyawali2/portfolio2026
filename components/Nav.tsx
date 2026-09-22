@@ -9,7 +9,7 @@ export function Nav({ name = "HOME" }: { name?: string }) {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center justify-between gap-6 pt-9 mb-16 max-sm:pt-6 max-sm:mb-11 print:hidden">
+    <nav className="sticky top-0 z-40 flex items-center justify-between gap-6 pt-9 pb-4 mb-12 -mx-6 px-6 bg-paper/90 backdrop-blur-md max-sm:pt-6 max-sm:pb-3 max-sm:mb-8 max-sm:-mx-5 max-sm:px-5 print:hidden">
       <Link
         href="/"
         className="text-[0.9375rem] font-bold tracking-[-0.03em] no-underline transition-colors duration-140 hover:text-accent select-none"
