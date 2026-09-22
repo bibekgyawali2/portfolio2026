@@ -7,19 +7,18 @@ Four pages, no client-side JavaScript beyond the nav and theme toggle.
 
 | Route | What it is |
 | --- | --- |
-| `/` | Curriculum vitae / Home page |
-| `/projects` | Project index (What I have built) |
+| `/` | Portfolio and Curriculum Vitae |
+| `/projects` | Project index |
 | `/projects/[slug]` | Individual project write-ups and documentation |
-| `/cv` | Canonical alias to home CV |
 
 ## Editing
 
 Content is data, kept apart from presentation:
 
-- [`content/profile.ts`](content/profile.ts) — identity, nav, home copy, credentials,
+- [`content/profile.ts`](content/profile.ts) — identity, nav, credentials,
   education, coursework, thesis, experience, skills
 - [`content/projects.ts`](content/projects.ts) — one entry per project; adding one
-  creates its page at `/work/<slug>` automatically
+  creates its page at `/projects/<slug>` automatically
 
 `*asterisks*` inside content strings render as italics.
 

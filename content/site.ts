@@ -31,7 +31,7 @@ export const site = {
     "SmartPalika",
     "Kingsoft",
     "Time Series Forecasting",
-    "5G Wireless Communication",
+    "Electronics Engineering",
   ],
 };
 
@@ -103,8 +103,7 @@ export const personSchema = {
     ...(cert.href ? { url: cert.href } : {}),
   })),
   knowsAbout: [
-    "Computer Science",
-    "5G Wireless Communication",
+    "Electronics and Communication Engineering",
     "Digital Signal Processing",
     "Embedded Systems",
     "Control Systems",

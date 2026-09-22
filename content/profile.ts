@@ -32,15 +32,6 @@ export const nav = [
   { label: "Projects", href: "/projects" },
 ];
 
-export const home = {
-  display:
-    "Computer science and 5G wireless communication, from signal processing up.",
-  intro: [
-    "I am an electronics engineer in Kathmandu. My thesis was a ventilator: a closed-loop device built from parts a hospital workshop could source, with a PID controller holding airway pressure against lungs that do not behave linearly.",
-    "Alongside the degree I spent three years writing software that reached a lot of people — municipal services used by over 100,000 citizens, and a retail platform running in 1,000 shops. Useful work that funded my studies, but real-time systems and biomedical instrumentation are the problems I want to pursue.",
-  ],
-  now: "Applying for master's study in these areas.",
-};
 
 export const education = [
   {
