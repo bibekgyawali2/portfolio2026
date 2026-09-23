@@ -6,16 +6,18 @@ export function Section({
   icon,
   lede,
   more,
+  className = "mt-8 sm:mt-10",
   children,
 }: {
   title: string;
   icon?: ReactNode;
   lede?: string;
   more?: { href: string; label: string };
+  className?: string;
   children: ReactNode;
 }) {
   return (
-    <section className="mt-10 sm:mt-12 first-of-type:mt-0 print:mt-7 print:break-inside-avoid">
+    <section className={`print:mt-7 print:break-inside-avoid ${className}`}>
       <div
         className={`flex items-center justify-between gap-6 border-t border-rule pt-5 sm:pt-6 ${
           lede ? "mb-3.5 sm:mb-4" : "mb-7 sm:mb-8"

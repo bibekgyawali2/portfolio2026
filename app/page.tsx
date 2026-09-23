@@ -145,6 +145,7 @@ export default function Home() {
         <Section
           title="Education"
           icon={<GraduationCapIcon className="w-4 h-4 text-icon-education" />}
+          className="mt-8 sm:mt-10"
         >
           {education.map((item) => (
             <Entry
