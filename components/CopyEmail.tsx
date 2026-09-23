@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { CheckIcon, CopyIcon } from "./Icons";
 
 export function CopyEmail({ email }: { email: string }) {
@@ -24,16 +25,34 @@ export function CopyEmail({ email }: { email: string }) {
       onClick={handleCopy}
       aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
       title={copied ? "Copied to clipboard!" : "Copy email"}
-      className="inline-flex items-center justify-center p-1 rounded text-ink-faint hover:text-accent hover:bg-accent-subtle/80 active:scale-95 transition-all duration-120 cursor-pointer bg-transparent border-0 print:hidden"
+      className="inline-flex items-center justify-center p-1 rounded text-ink-faint hover:text-accent hover:bg-accent-subtle/80 active:scale-95 transition-all duration-120 cursor-pointer bg-transparent border-0 print:hidden focus-visible:outline-2 focus-visible:outline-accent"
     >
-      {copied ? (
-        <span className="inline-flex items-center gap-1 text-[0.6875rem] font-mono text-accent font-medium">
-          <CheckIcon className="w-3 h-3 text-accent" />
-          <span>copied</span>
-        </span>
-      ) : (
-        <CopyIcon className="w-3 h-3 opacity-60 hover:opacity-100" />
-      )}
+      <AnimatePresence mode="wait" initial={false}>
+        {copied ? (
+          <motion.span
+            key="copied"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.85 }}
+            transition={{ duration: 0.14 }}
+            className="inline-flex items-center gap-1 text-[0.6875rem] font-mono text-accent font-medium"
+          >
+            <CheckIcon className="w-3 h-3 text-accent" />
+            <span>copied</span>
+          </motion.span>
+        ) : (
+          <motion.span
+            key="copy"
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.85 }}
+            transition={{ duration: 0.14 }}
+            className="inline-flex items-center justify-center"
+          >
+            <CopyIcon className="w-3 h-3 opacity-60 hover:opacity-100" />
+          </motion.span>
+        )}
+      </AnimatePresence>
     </button>
   );
 }

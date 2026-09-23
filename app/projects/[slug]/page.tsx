@@ -8,7 +8,9 @@ import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
 import { createBreadcrumbSchema, createProjectSchema, site } from "@/content/site";
 import { projectBySlug, projects } from "@/content/projects";
-import { GithubIcon, ExternalLinkIcon, GooglePlayIcon, GooglePlayColorIcon, ArrowUpIcon } from "@/components/Icons";
+import { ArrowUpIcon } from "@/components/Icons";
+import { ProjectActionLink } from "@/components/ProjectActionLink";
+import { MotionFadeIn } from "@/components/motion/MotionFadeIn";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -75,80 +77,68 @@ export default async function ProjectPage({ params }: Params) {
   return (
     <article>
       <StructuredData data={pageSchemaGraph} />
-      <nav aria-label="Breadcrumb" className="mb-6">
-        <ol className="flex items-center gap-2 font-mono text-[0.75rem] font-medium text-ink-faint list-none p-0 m-0">
-          <li>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-1.5 no-underline hover:text-accent transition-colors duration-140 group"
-            >
-              <span
-                className="transition-transform duration-140 group-hover:-translate-x-0.5"
-                aria-hidden="true"
+      <MotionFadeIn delay={0}>
+        <nav aria-label="Breadcrumb" className="mb-6">
+          <ol className="flex items-center gap-2 font-mono text-[0.75rem] font-medium text-ink-faint list-none p-0 m-0">
+            <li>
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-1.5 no-underline hover:text-accent transition-colors duration-140 group"
               >
-                ←
-              </span>
-              <span>All projects</span>
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-rule select-none">/</li>
-          <li aria-current="page" className="text-ink-soft truncate max-w-[200px] sm:max-w-none">
-            {project.title}
-          </li>
-        </ol>
-      </nav>
+                <span
+                  className="transition-transform duration-140 group-hover:-translate-x-0.5"
+                  aria-hidden="true"
+                >
+                  ←
+                </span>
+                <span>All projects</span>
+              </Link>
+            </li>
+            <li aria-hidden="true" className="text-rule select-none">/</li>
+            <li aria-current="page" className="text-ink-soft truncate max-w-[200px] sm:max-w-none">
+              {project.title}
+            </li>
+          </ol>
+        </nav>
 
-      <PageHeader
-        title={project.title}
-        meta={`${project.kind} · ${project.year}`}
-        lede={project.lede}
-      />
+        <PageHeader
+          title={project.title}
+          meta={`${project.kind} · ${project.year}`}
+          lede={project.lede}
+        />
+      </MotionFadeIn>
 
-      <div className="border-t border-b border-rule py-7 mb-14">
-        <DataList items={project.facts} />
-        {project.repo || project.demo ? (
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-3 mt-6">
-            {project.repo ? (
-              <a
-                href={project.repo}
-                className="inline-flex items-center gap-2 font-mono text-[0.8125rem] font-medium text-accent bg-accent-subtle border border-accent-border py-1.5 px-3.5 rounded-full no-underline transition-all duration-140 hover:bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] hover:border-accent hover:-translate-y-px active:translate-y-0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GithubIcon className="w-3.5 h-3.5 shrink-0" />
-                <span>Source on GitHub</span>
-              </a>
-            ) : null}
-            {project.demo ? (
-              <a
-                href={project.demo}
-                className={
-                  project.demo.includes("play.google.com")
-                    ? "inline-flex items-center gap-2.5 font-mono text-[0.8125rem] font-semibold text-emerald-800 dark:text-emerald-300 bg-gradient-to-r from-emerald-500/15 via-teal-500/15 to-cyan-500/15 hover:from-emerald-500/25 hover:via-teal-500/25 hover:to-cyan-500/25 border border-emerald-500/40 dark:border-emerald-400/40 py-1.5 px-4 rounded-full no-underline transition-all duration-140 hover:border-emerald-500 hover:shadow-xs hover:-translate-y-px active:translate-y-0 shadow-2xs group/btn"
-                    : "inline-flex items-center gap-2 font-mono text-[0.8125rem] font-medium text-accent bg-accent-subtle border border-accent-border py-1.5 px-3.5 rounded-full no-underline transition-all duration-140 hover:bg-[color-mix(in_srgb,var(--accent)_14%,transparent)] hover:border-accent hover:-translate-y-px active:translate-y-0"
-                }
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {project.demo.includes("play.google.com") ? (
-                  <GooglePlayColorIcon className="w-4 h-4 shrink-0 transition-transform duration-140 group-hover/btn:scale-110" />
-                ) : (
-                  <ExternalLinkIcon className="w-3.5 h-3.5 shrink-0" />
-                )}
-                <span>
-                  {project.demoLabel ||
+      <MotionFadeIn delay={0.06}>
+        <div className="border-t border-b border-rule py-7 mb-14">
+          <DataList items={project.facts} />
+          {project.repo || project.demo ? (
+            <div className="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-rule/60">
+              {project.demo ? (
+                <ProjectActionLink
+                  href={project.demo}
+                  label={
+                    project.demoLabel ||
                     (project.demo.includes("play.google.com")
                       ? "View on Google Play"
-                      : "Live deployment")}
-                </span>
-              </a>
-            ) : null}
-          </div>
-        ) : null}
-      </div>
+                      : "Live deployment")
+                  }
+                />
+              ) : null}
+              {project.repo ? (
+                <ProjectActionLink
+                  href={project.repo}
+                  label="View on GitHub"
+                />
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      </MotionFadeIn>
 
       {project.sections.length ? (
-        <ProjectBody sections={project.sections} />
+        <MotionFadeIn delay={0.12}>
+          <ProjectBody sections={project.sections} />
+        </MotionFadeIn>
       ) : null}
 
       <nav

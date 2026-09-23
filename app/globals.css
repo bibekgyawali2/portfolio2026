@@ -43,18 +43,18 @@
   --accent-subtle: rgba(30, 86, 160, 0.08);
   --accent-border: rgba(30, 86, 160, 0.2);
 
-  --icon-location: #e11d48;
-  --icon-email: #2563eb;
-  --icon-github: #6366f1;
-  --icon-linkedin: #0284c7;
-  --icon-award: #d97706;
-  --icon-education: #059669;
-  --icon-research: #7c3aed;
-  --icon-experience: #ea580c;
-  --icon-projects: #0891b2;
-  --icon-skills: #db2777;
-  --icon-referees: #4f46e5;
-  --icon-top: #64748b;
+  --icon-location: var(--ink-faint);
+  --icon-email: var(--accent);
+  --icon-github: var(--ink-soft);
+  --icon-linkedin: var(--accent);
+  --icon-award: var(--accent);
+  --icon-education: var(--accent);
+  --icon-research: var(--accent);
+  --icon-experience: var(--accent);
+  --icon-projects: var(--accent);
+  --icon-skills: var(--accent);
+  --icon-referees: var(--accent);
+  --icon-top: var(--ink-faint);
 
   --measure: 48rem;
   --gutter: 1.5rem;
@@ -78,19 +78,6 @@ html[data-theme="dark"] {
   --accent-subtle: rgba(91, 155, 248, 0.12);
   --accent-border: rgba(91, 155, 248, 0.25);
 
-  --icon-location: #fb7185;
-  --icon-email: #60a5fa;
-  --icon-github: #a5b4fc;
-  --icon-linkedin: #38bdf8;
-  --icon-award: #fbbf24;
-  --icon-education: #34d399;
-  --icon-research: #a78bfa;
-  --icon-experience: #fb923c;
-  --icon-projects: #22d3ee;
-  --icon-skills: #f472b6;
-  --icon-referees: #818cf8;
-  --icon-top: #94a3b8;
-
   color-scheme: dark;
 }
 
@@ -106,19 +93,6 @@ html[data-theme="dark"] {
     --accent-hover: #7db1fa;
     --accent-subtle: rgba(91, 155, 248, 0.12);
     --accent-border: rgba(91, 155, 248, 0.25);
-
-    --icon-location: #fb7185;
-    --icon-email: #60a5fa;
-    --icon-github: #a5b4fc;
-    --icon-linkedin: #38bdf8;
-    --icon-award: #fbbf24;
-    --icon-education: #34d399;
-    --icon-research: #a78bfa;
-    --icon-experience: #fb923c;
-    --icon-projects: #22d3ee;
-    --icon-skills: #f472b6;
-    --icon-referees: #818cf8;
-    --icon-top: #94a3b8;
 
     color-scheme: dark;
   }

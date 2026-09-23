@@ -18,17 +18,10 @@ import { PageHeader } from "@/components/PageHeader";
 import { Section } from "@/components/Section";
 import { CertificationCard } from "@/components/CertificationCard";
 import { CopyEmail } from "@/components/CopyEmail";
-import {
-  certifications,
-  credentials,
-  education,
-  experience,
-  identity,
-  referees,
-  skills,
-} from "@/content/profile";
+import { certifications, credentials, education, experience, identity, referees, skills } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
+import { MotionFadeIn } from "@/components/motion/MotionFadeIn";
 
 export const metadata: Metadata = {
   title: site.title,
@@ -104,143 +97,159 @@ function renderLinkIcon(label: string) {
 export default function Home() {
   return (
     <>
-      <PageHeader
-        title={identity.name}
-        meta={
-          <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 m-0">
-            <span className="inline-flex items-center gap-1.5 text-inherit no-underline">
-              <MapPinIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-location shrink-0" />
-              <span>{identity.location}</span>
-            </span>
-            <span className="opacity-45 select-none" aria-hidden="true">
-              ·
-            </span>
-            <span className="inline-flex items-center gap-1">
-              <a
-                href={`mailto:${identity.email}`}
-                className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
-              >
-                <MailIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-email shrink-0 transition-transform duration-120 group-hover:scale-110" />
-                <span>{identity.email}</span>
-              </a>
-              <CopyEmail email={identity.email} />
-            </span>
-            {identity.links.map((link) => (
-              <span key={link.href} className="inline-flex items-center gap-2">
-                <span className="opacity-45 select-none" aria-hidden="true">
-                  ·
-                </span>
-                <a
-                  href={link.href}
-                  className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {renderLinkIcon(link.label)}
-                  <span>{link.label}</span>
-                  <ExternalLinkIcon className="w-2.5 h-2.5 text-ink-faint opacity-50 group-hover:opacity-100 group-hover:text-accent transition-all" />
-                </a>
+      <MotionFadeIn delay={0}>
+        <PageHeader
+          title={identity.name}
+          meta={
+            <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 m-0">
+              <span className="inline-flex items-center gap-1.5 text-inherit no-underline">
+                <MapPinIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-location shrink-0" />
+                <span>{identity.location}</span>
               </span>
-            ))}
-          </p>
-        }
-      />
+              <span className="opacity-45 select-none" aria-hidden="true">
+                ·
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <a
+                  href={`mailto:${identity.email}`}
+                  className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
+                >
+                  <MailIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-email shrink-0 transition-transform duration-120 group-hover:scale-110" />
+                  <span>{identity.email}</span>
+                </a>
+                <CopyEmail email={identity.email} />
+              </span>
+              {identity.links.map((link) => (
+                <span key={link.href} className="inline-flex items-center gap-2">
+                  <span className="opacity-45 select-none" aria-hidden="true">
+                    ·
+                  </span>
+                  <a
+                    href={link.href}
+                    className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {renderLinkIcon(link.label)}
+                    <span>{link.label}</span>
+                    <ExternalLinkIcon className="w-2.5 h-2.5 text-ink-faint opacity-50 group-hover:opacity-100 group-hover:text-accent transition-all" />
+                  </a>
+                </span>
+              ))}
+            </p>
+          }
+        />
+      </MotionFadeIn>
 
-      <Section
-        title="Education"
-        icon={<GraduationCapIcon className="w-4 h-4 text-icon-education" />}
-      >
-        {education.map((item) => (
-          <Entry
-            key={item.degree}
-            when={item.period}
-            title={item.degree}
-            where={item.institution}
-            note={item.note}
-          />
-        ))}
-
-        {record.length > 0 && (
-          <div className="mt-6">
-            <DataList items={record} />
-          </div>
-        )}
-      </Section>
-
-      <Section
-        title="Research"
-        icon={<CpuIcon className="w-4 h-4 text-icon-research" />}
-      >
-        {research.map((project) => (
-          <Entry
-            key={project.slug}
-            when={project.year}
-            title={project.title}
-            href={`/projects/${project.slug}`}
-            where={provenance(project)}
-            body={project.cv ?? [project.summary]}
-          />
-        ))}
-      </Section>
-
-      <Section
-        title="Professional experience"
-        icon={<BriefcaseIcon className="w-4 h-4 text-icon-experience" />}
-        lede={experience.preamble || undefined}
-      >
-        {experience.roles.map((role) => (
-          <Entry
-            key={role.institution}
-            when={role.period}
-            title={role.role}
-            where={role.institution}
-            whereHref={role.institutionHref}
-            logo={role.logo}
-            body={role.body}
-            note={role.note || undefined}
-          />
-        ))}
-      </Section>
-
-      <Section
-        title="Projects"
-        icon={<TerminalIcon className="w-4 h-4 text-icon-projects" />}
-        lede="Civic technology platforms and machine learning systems."
-        more={{ href: "/projects", label: "All projects" }}
-      >
-        {engineeringAndMl.map((project) => (
-          <Entry
-            key={project.slug}
-            when={project.year}
-            title={project.title}
-            href={`/projects/${project.slug}`}
-            body={[project.summary]}
-          />
-        ))}
-      </Section>
-
-      <Section
-        title="Technical skills"
-        icon={<SlidersIcon className="w-4 h-4 text-icon-skills" />}
-      >
-        <DataList items={skills} />
-      </Section>
-
-      <Section
-        title="Certifications and awards"
-        icon={<AwardIcon className="w-4 h-4 text-icon-award" />}
-      >
-        <ul className="m-0 p-0 list-none space-y-1">
-          {certifications.map((cert) => (
-            <CertificationCard key={cert.title} cert={cert} />
+      <MotionFadeIn delay={0.06}>
+        <Section
+          title="Education"
+          icon={<GraduationCapIcon className="w-4 h-4 text-icon-education" />}
+        >
+          {education.map((item) => (
+            <Entry
+              key={item.degree}
+              when={item.period}
+              title={item.degree}
+              where={item.institution}
+              note={item.note}
+            />
           ))}
-        </ul>
-      </Section>
+
+          {record.length > 0 && (
+            <div className="mt-6">
+              <DataList items={record} />
+            </div>
+          )}
+        </Section>
+      </MotionFadeIn>
+
+      <MotionFadeIn delay={0.12}>
+        <Section
+          title="Research"
+          icon={<CpuIcon className="w-4 h-4 text-icon-research" />}
+        >
+          {research.map((project) => (
+            <Entry
+              key={project.slug}
+              when={project.year}
+              title={project.title}
+              href={`/projects/${project.slug}`}
+              where={provenance(project)}
+              body={project.cv ?? [project.summary]}
+            />
+          ))}
+        </Section>
+      </MotionFadeIn>
+
+      <MotionFadeIn delay={0.18}>
+        <Section
+          title="Professional experience"
+          icon={<BriefcaseIcon className="w-4 h-4 text-icon-experience" />}
+          lede={experience.preamble || undefined}
+        >
+          {experience.roles.map((role) => (
+            <Entry
+              key={role.institution}
+              when={role.period}
+              title={role.role}
+              where={role.institution}
+              whereHref={role.institutionHref}
+              logo={role.logo}
+              body={role.body}
+              note={role.note || undefined}
+            />
+          ))}
+        </Section>
+      </MotionFadeIn>
+
+      <MotionFadeIn delay={0.24}>
+        <Section
+          title="Projects"
+          icon={<TerminalIcon className="w-4 h-4 text-icon-projects" />}
+          lede="Civic technology platforms and machine learning systems."
+          more={{ href: "/projects", label: "All projects" }}
+        >
+          {engineeringAndMl.map((project) => (
+            <Entry
+              key={project.slug}
+              when={project.year}
+              title={project.title}
+              href={`/projects/${project.slug}`}
+              body={[project.summary]}
+            />
+          ))}
+        </Section>
+      </MotionFadeIn>
+
+      <MotionFadeIn delay={0.3}>
+        <Section
+          title="Technical skills"
+          icon={<SlidersIcon className="w-4 h-4 text-icon-skills" />}
+        >
+          <DataList items={skills} />
+        </Section>
+      </MotionFadeIn>
+
+      <MotionFadeIn delay={0.36}>
+        <Section
+          title="Certifications and awards"
+          icon={<AwardIcon className="w-4 h-4 text-icon-award" />}
+        >
+          <ul className="m-0 p-0 list-none space-y-1">
+            {certifications.map((cert) => (
+              <CertificationCard key={cert.title} cert={cert} />
+            ))}
+          </ul>
+        </Section>
+      </MotionFadeIn>
 
       {referees.length ? (
-        <Section title="Referees">
-          <DataList items={referees} />
-        </Section>
+        <MotionFadeIn delay={0.42}>
+          <Section title="Referees">
+            <DataList items={referees} />
+          </Section>
+        </MotionFadeIn>
       ) : null}
     </>
   );

@@ -8,7 +8,7 @@ export const site = {
   /** Shown as the browser tab title on the front page, and in search results. */
   title: `${identity.name} | Electronics Engineer, Kathmandu`,
   description:
-    "Bibek Gyawali is an Electronics and Communication Engineering graduate from Tribhuvan University, Kathmandu. Specializing in embedded systems, biomedical instrumentation, digital signal processing, and machine learning.",
+    "Bibek Gyawali is an Electronics Engineer from Kathmandu, Nepal, specializing in embedded systems, biomedical instrumentation, and applied machine learning.",
   locale: "en_US",
   keywords: [
     "Bibek Gyawali",

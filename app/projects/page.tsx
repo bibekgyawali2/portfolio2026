@@ -5,6 +5,7 @@ import { StructuredData } from "@/components/StructuredData";
 import { identity } from "@/content/profile";
 import { projects } from "@/content/projects";
 import { createBreadcrumbSchema, site } from "@/content/site";
+import { MotionFadeIn } from "@/components/motion/MotionFadeIn";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -69,11 +70,15 @@ export default function Projects() {
   return (
     <>
       <StructuredData data={projectsPageSchema} />
-      <PageHeader
-        title="Projects"
-        lede="Selected work in embedded control systems, biomedical instrumentation, applied machine learning, and time-series modeling."
-      />
-      <ProjectList projects={projects} headingLevel="h2" />
+      <MotionFadeIn delay={0}>
+        <PageHeader
+          title="Projects"
+          lede="Selected work in embedded control systems, biomedical instrumentation, applied machine learning, and time-series modeling."
+        />
+      </MotionFadeIn>
+      <MotionFadeIn delay={0.08}>
+        <ProjectList projects={projects} headingLevel="h2" />
+      </MotionFadeIn>
     </>
   );
 }
