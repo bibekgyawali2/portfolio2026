@@ -205,7 +205,6 @@ export default function Home() {
       <Section
         title="Projects"
         icon={<TerminalIcon className="w-4 h-4 text-icon-projects" />}
-        lede="Civic technology platforms and machine learning systems."
         more={{ href: "/projects", label: "All projects" }}
       >
         {engineeringAndMl.map((project) => (
