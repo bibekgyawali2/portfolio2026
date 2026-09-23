@@ -101,53 +101,42 @@ export default function Home() {
         <PageHeader
           title={identity.name}
           meta={
-            <div className="flex flex-col gap-2.5">
-              <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 m-0">
-                <span className="inline-flex items-center gap-1.5 text-inherit no-underline">
-                  <MapPinIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-location shrink-0" />
-                  <span>{identity.location}</span>
-                </span>
-                <span className="opacity-45 select-none" aria-hidden="true">
-                  ·
-                </span>
-                <span className="inline-flex items-center gap-1">
+            <p className="flex flex-wrap items-center gap-x-2.5 gap-y-1.5 m-0">
+              <span className="inline-flex items-center gap-1.5 text-inherit no-underline">
+                <MapPinIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-location shrink-0" />
+                <span>{identity.location}</span>
+              </span>
+              <span className="opacity-45 select-none" aria-hidden="true">
+                ·
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <a
+                  href={`mailto:${identity.email}`}
+                  className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
+                >
+                  <MailIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-email shrink-0 transition-transform duration-120 group-hover:scale-110" />
+                  <span>{identity.email}</span>
+                </a>
+                <CopyEmail email={identity.email} />
+              </span>
+              {identity.links.map((link) => (
+                <span key={link.href} className="inline-flex items-center gap-2">
+                  <span className="opacity-45 select-none" aria-hidden="true">
+                    ·
+                  </span>
                   <a
-                    href={`mailto:${identity.email}`}
+                    href={link.href}
                     className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <MailIcon className="inline-block w-[0.9375rem] h-[0.9375rem] text-icon-email shrink-0 transition-transform duration-120 group-hover:scale-110" />
-                    <span>{identity.email}</span>
+                    {renderLinkIcon(link.label)}
+                    <span>{link.label}</span>
+                    <ExternalLinkIcon className="w-2.5 h-2.5 text-ink-faint opacity-50 group-hover:opacity-100 group-hover:text-accent transition-all" />
                   </a>
-                  <CopyEmail email={identity.email} />
                 </span>
-                {identity.links.map((link) => (
-                  <span key={link.href} className="inline-flex items-center gap-2">
-                    <span className="opacity-45 select-none" aria-hidden="true">
-                      ·
-                    </span>
-                    <a
-                      href={link.href}
-                      className="inline-flex items-center gap-1.5 text-inherit no-underline transition-colors duration-140 hover:text-accent hover:underline hover:underline-offset-[0.2em] group"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {renderLinkIcon(link.label)}
-                      <span>{link.label}</span>
-                      <ExternalLinkIcon className="w-2.5 h-2.5 text-ink-faint opacity-50 group-hover:opacity-100 group-hover:text-accent transition-all" />
-                    </a>
-                  </span>
-                ))}
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-accent/8 border border-accent/20 text-ink-soft text-[0.75rem] font-mono select-none">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                  </span>
-                  <span>Embedded Systems & Biomedical Instrumentation</span>
-                </span>
-              </div>
-            </div>
+              ))}
+            </p>
           }
         />
       </MotionFadeIn>
