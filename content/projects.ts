@@ -28,9 +28,9 @@ export const projects: Project[] = [
     grade: "76/100",
     repo: "",
     cv: [
-      "Designed and prototyped a fully functional closed-loop ventilator, implementing PID control in embedded C on Arduino to regulate tidal volume and airway pressure against the non-linear dynamics of a bag-valve pneumatic system.",
-      "Instrumented the device with a MAX30100 pulse oximeter, MPX5010 differential pressure sensor and LM35 temperature sensor over I²C and analog interfaces, sampling SpO₂, heart rate and airway pressure fast enough to sit inside the control loop rather than merely report after it.",
-      "Built the patient monitoring interface with live waveform visualisation, carrying the system end to end from hardware prototype to clinical-facing software.",
+      "Prototyped a closed-loop ventilator with Arduino PID pressure control.",
+      "Integrated differential pressure and SpO₂ sensors for real-time feedback.",
+      "Built a patient monitoring interface with live waveform telemetry.",
     ],
     summary:
       "A closed-loop bag-valve mask ventilator with real-time airway pressure regulation and live patient waveform telemetry.",
