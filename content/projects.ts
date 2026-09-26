@@ -59,18 +59,6 @@ export const projects: Project[] = [
           "A companion monitoring interface parses serial telemetry to display real-time airway pressure curves, respiration rate, and patient vitals for visual inspection.",
         ],
       },
-      {
-        heading: "Engineering Challenges",
-        body: [
-          "Actuator gain tuning required extensive bench calibration against pneumatic backpressures to minimize overshoot while maintaining responsive rise times. Additionally, running multi-sensor acquisition, PID calculation, and serial telemetry within strict real-time deadlines on an 8-bit microcontroller required tight control over loop execution times and interrupt priorities.",
-        ],
-      },
-      {
-        heading: "Limitations & Future Work",
-        body: [
-          "Future iterations would benefit from formal mathematical system identification of patient airway impedance, transitioning from empirical PID to model-predictive control (MPC), and validation against a calibrated artificial test lung.",
-        ],
-      },
     ],
   },
   {
