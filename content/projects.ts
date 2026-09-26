@@ -48,7 +48,7 @@ export const projects: Project[] = [
       {
         heading: "Background & Objectives",
         body: [
-          "Commercial ventilators in Nepal are primarily imported, costly to maintain, and difficult to service outside major tertiary hospitals. This project investigated whether core mechanical ventilation functions—specifically regulated tidal volume and pressure control—could be delivered using accessible, locally replaceable electromechanical and sensor components.",
+          "Commercial ventilators in Nepal are primarily imported, costly to maintain, and difficult to service outside major tertiary hospitals. This project investigated whether core mechanical ventilation functions, specifically regulated tidal volume and pressure control, could be delivered using accessible, locally replaceable electromechanical and sensor components.",
         ],
       },
       {

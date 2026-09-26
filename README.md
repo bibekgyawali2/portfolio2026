@@ -1,4 +1,4 @@
-# bibekgyawali — portfolio
+# bibekgyawali - portfolio
 
 A small static site built with Next.js (App Router), exported to plain HTML.
 Four pages, no client-side JavaScript beyond the nav and theme toggle.
@@ -15,9 +15,9 @@ Four pages, no client-side JavaScript beyond the nav and theme toggle.
 
 Content is data, kept apart from presentation:
 
-- [`content/profile.ts`](content/profile.ts) — identity, nav, credentials,
+- [`content/profile.ts`](content/profile.ts): identity, nav, credentials,
   education, coursework, thesis, experience, skills
-- [`content/projects.ts`](content/projects.ts) — one entry per project; adding one
+- [`content/projects.ts`](content/projects.ts): one entry per project; adding one
   creates its page at `/projects/<slug>` automatically
 
 `*asterisks*` inside content strings render as italics.
@@ -48,8 +48,7 @@ when printing so `/cv` prints clean, with URLs expanded.
 ## SEO
 
 - [`content/site.ts`](content/site.ts) holds the canonical origin, the search
-  title and description, and the `Person` structured data. Everything else —
-  canonicals, sitemap, robots, Open Graph — derives from it.
+  title and description, and the `Person` structured data. Everything else (canonicals, sitemap, robots, Open Graph) derives from it.
 - `sitemap.xml` and `robots.txt` are generated at build from the route list.
 - The Open Graph card is rendered from the headline at build time; `vercel.json`
   pins its Content-Type, and a `.png` copy is published alongside it.
@@ -62,7 +61,7 @@ npm run dev     # http://localhost:3000
 npm run build   # static export to out/
 ```
 
-`out/` is plain static output — GitHub Pages, Netlify, Vercel, or any file
+`out/` is plain static output for GitHub Pages, Netlify, Vercel, or any file
 server. Drop `output: "export"` from `next.config.ts` if you later want server
 features.
 

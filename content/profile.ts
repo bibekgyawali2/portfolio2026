@@ -53,7 +53,7 @@ export const experience = {
       logo: "/logos/kingsoft.png",
       body: [
         "Architected a Flutter codebase on the BLoC pattern and built the CI/CD and automated test pipeline in GitHub Actions across iOS and Android.",
-        "Profiled and removed performance bottlenecks — widget tree, memory, lazy loading — for low-end Android hardware, which is most of the installed base here.",
+        "Profiled and removed performance bottlenecks across the widget tree, memory, and lazy loading for low-end Android hardware, which is most of the installed base here.",
       ],
       note: "",
     },
